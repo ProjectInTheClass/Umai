@@ -20,6 +20,7 @@
 		357395802CE5B724008C7BA2 /* DMSerifDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3573957E2CE5B724008C7BA2 /* DMSerifDisplay-Regular.ttf */; };
 		357395812CE5B724008C7BA2 /* DMSerifDisplay-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3573957F2CE5B724008C7BA2 /* DMSerifDisplay-Italic.ttf */; };
 		358049572CBE045200CAF11F /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358049562CBE045200CAF11F /* Form.swift */; };
+		8ED4C83E7DAECCB7B92D148F /* Pods_UMai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9950D2809DD4715A2D9D6DC /* Pods_UMai.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,9 @@
 		3573957E2CE5B724008C7BA2 /* DMSerifDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSerifDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		3573957F2CE5B724008C7BA2 /* DMSerifDisplay-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSerifDisplay-Italic.ttf"; sourceTree = "<group>"; };
 		358049562CBE045200CAF11F /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
+		7F671542CE5BAF485F475445 /* Pods-UMai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UMai.debug.xcconfig"; path = "Target Support Files/Pods-UMai/Pods-UMai.debug.xcconfig"; sourceTree = "<group>"; };
+		F39E528FDBAF6B24BD5CA4AD /* Pods-UMai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UMai.release.xcconfig"; path = "Target Support Files/Pods-UMai/Pods-UMai.release.xcconfig"; sourceTree = "<group>"; };
+		F9950D2809DD4715A2D9D6DC /* Pods_UMai.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UMai.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ED4C83E7DAECCB7B92D148F /* Pods_UMai.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +61,8 @@
 			children = (
 				35463DDF2CB4E52500D4F549 /* UMai */,
 				35463DDE2CB4E52500D4F549 /* Products */,
+				9879325007BE6A959830FF58 /* Pods */,
+				5408DFECF67DEB25E53B86D8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +135,24 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		5408DFECF67DEB25E53B86D8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F9950D2809DD4715A2D9D6DC /* Pods_UMai.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9879325007BE6A959830FF58 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7F671542CE5BAF485F475445 /* Pods-UMai.debug.xcconfig */,
+				F39E528FDBAF6B24BD5CA4AD /* Pods-UMai.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +160,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35463DEB2CB4E52600D4F549 /* Build configuration list for PBXNativeTarget "UMai" */;
 			buildPhases = (
+				36F7CE397BA744C2B96870EA /* [CP] Check Pods Manifest.lock */,
 				35463DD92CB4E52500D4F549 /* Sources */,
 				35463DDA2CB4E52500D4F549 /* Frameworks */,
 				35463DDB2CB4E52500D4F549 /* Resources */,
+				E3E1E17D4D24643E901AE946 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -196,6 +223,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		36F7CE397BA744C2B96870EA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UMai-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3E1E17D4D24643E901AE946 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UMai/Pods-UMai-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UMai/Pods-UMai-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UMai/Pods-UMai-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		35463DD92CB4E52500D4F549 /* Sources */ = {
@@ -336,6 +405,7 @@
 		};
 		35463DEC2CB4E52600D4F549 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F671542CE5BAF485F475445 /* Pods-UMai.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -369,6 +439,7 @@
 		};
 		35463DED2CB4E52600D4F549 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F39E528FDBAF6B24BD5CA4AD /* Pods-UMai.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
