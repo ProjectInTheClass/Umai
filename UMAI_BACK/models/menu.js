@@ -1,4 +1,5 @@
 const { Sequelize, DataTypes } = require("sequelize");
+const restaurant = require("./restaurant");
 
 // 데이터베이스 연결 설정
 const sequelize = new Sequelize("testDB", "root", "1234", {
@@ -6,18 +7,43 @@ const sequelize = new Sequelize("testDB", "root", "1234", {
   dialect: "mysql",
 });
 
-const Restaurant = sequelize.define("Restaurant", {
-  restaurant_id: {
+const menu = sequelize.define("menu", {
+  menu_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
+  },
+  restaurant_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    foriegnKey: true,
   },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  address: {
-    type: DataTypes.STRING,
+  cash: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  taste: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  price: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  quantity: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  accessibility: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  ambiance: {
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
   description: {
@@ -34,13 +60,19 @@ const Restaurant = sequelize.define("Restaurant", {
   },
 });
 
+//관계설정
+menu.belongsTo(restaurant, {
+  foreignKey: "restaurant_id",
+  targetKey: "restaurant_id",
+});
+
 (async () => {
   try {
     await sequelize.sync();
-    console.log("Restaurant table has been created.");
+    console.log("menu table has been created.");
   } catch (error) {
     console.error("Error creating table:", error);
   }
 })();
 
-module.exports = Restaurant;
+module.exports = menu;
