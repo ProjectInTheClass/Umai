@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct ListView: View {
+    @StateObject private var viewModel = RestaurantViewModel()
+
     var body: some View {
         NavigationView {
             ZStack {
                 Color("backgroundGray")
-                    .ignoresSafeArea(.all)
-                
+                    .ignoresSafeArea()
+
                 VStack {
                     HStack {
                         Text("Umai Picks")
@@ -21,17 +23,18 @@ struct ListView: View {
                             .bold()
                         Image(systemName: "star.fill")
                             .foregroundColor(Color("star"))
-                        
                         Spacer()
                     }
                     .padding()
-                    
+
                     ScrollView {
                         VStack(spacing: 20) {
-                            ForEach(allMenu) { restaurant in
-                                NavigationLink(destination: DetailView(restaurant: restaurant)) {
-                                    RestaurantCard(restaurant: restaurant)
-                                }
+                            // Testing if it brings data from backend
+                            Text("Number of restaurants: \(viewModel.restaurants.count)")
+
+                            ForEach(viewModel.restaurants) { restaurant in
+                                Text("Restaurant: \(restaurant.name)") // Show the name of each restaurant
+                                    .font(.headline)
                             }
                         }
                         .padding()
@@ -39,12 +42,15 @@ struct ListView: View {
                 }
             }
             .navigationBarHidden(true)
+            .onAppear {
+                viewModel.fetchRestaurants()
+            }
         }
     }
 }
 
 struct RestaurantCard: View {
-    let restaurant: Restarurant
+    let restaurant: Restaurant
     
     var body: some View {
         RoundedRectangle(cornerRadius: 12)
@@ -53,16 +59,15 @@ struct RestaurantCard: View {
             .frame(height: 300)
             .overlay(
                 VStack(alignment: .leading, spacing: 8) {
-                    Image("Sushi")
+                    Image(systemName: "photo") // Placeholder for the actual image URL
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: .infinity) // 전체 너비 사용
+                        .frame(maxWidth: .infinity)
                         .frame(height: 150)
                         .clipped()
                     
                     HStack {
                         Text(restaurant.name)
-//                            .font(.custom("DMSeriDisplay-Italic", size: 20))
                             .font(.title2)
                             .bold()
                             .foregroundColor(.black)
@@ -74,10 +79,17 @@ struct RestaurantCard: View {
                         .font(.subheadline)
                         .foregroundColor(.gray)
                     
-                    Text("대표메뉴: \(restaurant.menu.joined(separator: ", "))")
+                   /* Text("대표메뉴: \(restaurant.menu.joined(separator: ", "))")
                         .font(.system(size: 14))
                         .foregroundColor(.gray)
-                        .lineLimit(1)
+                        .lineLimit(1)*/
+                    
+                    // Add Rating View
+                    RatingView(label: "Taste", rating: restaurant.Taste)
+                    RatingView(label: "Price", rating: restaurant.price)
+                    RatingView(label: "Quantity", rating: restaurant.quantity)
+                    RatingView(label: "Accessibility", rating: restaurant.accessibility)
+                    RatingView(label: "Emotion", rating: restaurant.emotion)
                 }
                 .padding()
             )
@@ -106,7 +118,7 @@ struct RatingView: View {
 }
 
 struct DetailView: View {
-    let restaurant: Restarurant
+    let restaurant: Restaurant
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -143,7 +155,7 @@ struct DetailView: View {
                             .clipped()
                     }
                     
-                    //rating
+                    // Rating and other details
                     HStack(spacing: 4) {
                         Image(systemName: "star.fill")
                             .foregroundColor(Color("star"))
@@ -219,7 +231,6 @@ struct DetailView: View {
         .navigationBarHidden(true)
         .background(Color.white)
         .edgesIgnoringSafeArea(.bottom)
-//        .toolbar(.hidden, for: .tabBar)
     }
 }
 
@@ -237,7 +248,6 @@ struct RatingDetailView: View {
         }
     }
 }
-
 
 #Preview {
     ListView()

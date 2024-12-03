@@ -1,27 +1,43 @@
-const express = require("express");
-const mysql = require("mysql2");
-
-const User = require("./models/user");
-const MBTI = require("./models/mbti");
-const Menu = require("./models/menu");
-const Restaurant = require("./models/restaurant");
-
+const express = require('express');
+const cors = require('cors');
 const app = express();
-const port = 3333;
+const Restaurant = require('./models/restaurant');  // Import the Restaurant model
+const restaurantRouter = require('./routers/restaurant');  // Import the restaurant routes
 
-app.get("/", async (req, res) => {
-  try {
-    // 데이터베이스에서 모든 레스토랑 정보를 가져옴
-    const restaurants = await Restaurant.findAll();
-    // console.log(restaurants); // 결과 확인
-    // main.ejs 파일로 렌더링, restaurants 데이터 전달
-    res.render("main.ejs", { restaurants });
-  } catch (error) {
-    console.error("Error fetching restaurants:", error);
-    res.status(500).send("Internal Server Error");
-  }
+const sequelize = require('./config/db');
+
+sequelize.sync({ force: false })  
+  .then(() => {
+    console.log('Database synced!');
+  })
+  .catch((error) => {
+    console.error('Error syncing database:', error);
+  });
+
+// Middleware
+app.use(cors());
+app.use(express.json()); // To parse incoming JSON requests
+app.set('view engine', 'ejs'); // Set view engine to EJS
+
+// Routes
+app.use('/api/restaurants', restaurantRouter);
+
+// Test route to check if server is working
+app.get('/', (req, res) => {
+  res.send('Backend is working!');
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+// Sync Sequelize models with the database
+Restaurant.sync({ force: false })  // force: false means it won’t drop existing tables
+  .then(() => {
+    console.log('Restaurant model synced with the database');
+  })
+  .catch((error) => {
+    console.error('Error syncing the model:', error);
+  });
+
+// Start the server
+const PORT = 3333;
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });

@@ -1,16 +1,23 @@
-const Restaurant = require("../models/restaurant");
+const Restaurant = require("./models/restaurant");
 
 exports.getRestaurantById = (req, res, next) => {
   const restaurantId = req.params.restaurantId;
-  Restaurant.findById(restaurantId)
+  Restaurant.findByPk(restaurantId)  // Use findByPk instead of findById
     .then((restaurant) => {
-      res.status(200).json({
-        message: "Fetched restaurant successfully.",
-        restaurant: restaurant,
-      });
+      if (restaurant) {
+        res.status(200).json({
+          message: "Fetched restaurant successfully.",
+          restaurant: restaurant,
+        });
+      } else {
+        res.status(404).json({
+          message: "Restaurant not found",
+        });
+      }
     })
     .catch((error) => {
       console.log(error);
+      res.status(500).json({ message: "Server error" });
     });
 };
 
@@ -25,6 +32,7 @@ exports.createRestaurant = (req, res, next) => {
     ambiance: req.body.ambiance,
     description: req.body.description,
   });
+  
   restaurant
     .save()
     .then((result) => {
@@ -35,6 +43,7 @@ exports.createRestaurant = (req, res, next) => {
     })
     .catch((error) => {
       console.log(error);
+      res.status(500).json({ message: "Server error" });
     });
 };
 

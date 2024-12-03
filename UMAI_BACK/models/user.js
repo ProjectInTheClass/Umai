@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require("sequelize");
+/*const { Sequelize, DataTypes } = require("sequelize");
 
 // 데이터베이스 연결 설정
 const sequelize = new Sequelize("testDB", "root", "1234", {
@@ -53,3 +53,4 @@ const User = sequelize.define("User", {
 })();
 
 module.exports = User;
+*/
