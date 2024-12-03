@@ -16,6 +16,9 @@
 		355C37332CB8FB74000D38C4 /* restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355C37322CB8FB74000D38C4 /* restaurant.swift */; };
 		357395802CE5B724008C7BA2 /* DMSerifDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3573957E2CE5B724008C7BA2 /* DMSerifDisplay-Regular.ttf */; };
 		357395812CE5B724008C7BA2 /* DMSerifDisplay-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3573957F2CE5B724008C7BA2 /* DMSerifDisplay-Italic.ttf */; };
+		357448232CFEC31200FB7ED6 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357448222CFEC31200FB7ED6 /* Login.swift */; };
+		357448252CFEC31C00FB7ED6 /* SurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357448242CFEC31C00FB7ED6 /* SurveyView.swift */; };
+		357448272CFEC33200FB7ED6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357448262CFEC33200FB7ED6 /* LoginView.swift */; };
 		35A58B332CF209DC0048DC62 /* CustomTabSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A58B302CF209DC0048DC62 /* CustomTabSwitcher.swift */; };
 		35A58B382CF20A1C0048DC62 /* ShareBTIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A58B362CF20A1C0048DC62 /* ShareBTIView.swift */; };
 		35E64B4B2CF7062C00443A36 /* tabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E64B4A2CF7062C00443A36 /* tabBarView.swift */; };
@@ -38,6 +41,9 @@
 		355C37322CB8FB74000D38C4 /* restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = restaurant.swift; sourceTree = "<group>"; };
 		3573957E2CE5B724008C7BA2 /* DMSerifDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSerifDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		3573957F2CE5B724008C7BA2 /* DMSerifDisplay-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSerifDisplay-Italic.ttf"; sourceTree = "<group>"; };
+		357448222CFEC31200FB7ED6 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		357448242CFEC31C00FB7ED6 /* SurveyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyView.swift; sourceTree = "<group>"; };
+		357448262CFEC33200FB7ED6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		35A58B302CF209DC0048DC62 /* CustomTabSwitcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabSwitcher.swift; sourceTree = "<group>"; };
 		35A58B362CF20A1C0048DC62 /* ShareBTIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareBTIView.swift; sourceTree = "<group>"; };
 		35E64B4A2CF7062C00443A36 /* tabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabBarView.swift; sourceTree = "<group>"; };
@@ -78,6 +84,7 @@
 		35463DDF2CB4E52500D4F549 /* UMai */ = {
 			isa = PBXGroup;
 			children = (
+				357448212CFEC2F800FB7ED6 /* Login */,
 				355C37322CB8FB74000D38C4 /* restaurant.swift */,
 				B1BCF4832CFDCC9C00A2FCC4 /* RestaurantViewModel.swift */,
 				354FA08B2CD33C9900ACC3BA /* Font */,
@@ -138,6 +145,16 @@
 				3534D12D2CD264AF00E256FB /* Liquefier.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		357448212CFEC2F800FB7ED6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				357448222CFEC31200FB7ED6 /* Login.swift */,
+				357448262CFEC33200FB7ED6 /* LoginView.swift */,
+				357448242CFEC31C00FB7ED6 /* SurveyView.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,9 +234,12 @@
 				355C37332CB8FB74000D38C4 /* restaurant.swift in Sources */,
 				35A58B382CF20A1C0048DC62 /* ShareBTIView.swift in Sources */,
 				35E64B4D2CF7068100443A36 /* HomeView.swift in Sources */,
+				357448232CFEC31200FB7ED6 /* Login.swift in Sources */,
 				35E64B4F2CF7070D00443A36 /* PersonView.swift in Sources */,
 				35463DE32CB4E52500D4F549 /* ContentView.swift in Sources */,
+				357448252CFEC31C00FB7ED6 /* SurveyView.swift in Sources */,
 				35463DE12CB4E52500D4F549 /* UMaiApp.swift in Sources */,
+				357448272CFEC33200FB7ED6 /* LoginView.swift in Sources */,
 				35E64B512CF7075A00443A36 /* ListView.swift in Sources */,
 				B1BCF4842CFDCC9C00A2FCC4 /* RestaurantViewModel.swift in Sources */,
 				B1C3BDBE2CFEBD3C00614649 /* LoginPageView.swift in Sources */,
