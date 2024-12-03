@@ -23,6 +23,7 @@
 		35E64B4F2CF7070D00443A36 /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E64B4E2CF7070D00443A36 /* PersonView.swift */; };
 		35E64B512CF7075A00443A36 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E64B502CF7075A00443A36 /* ListView.swift */; };
 		B1BCF4842CFDCC9C00A2FCC4 /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BCF4832CFDCC9C00A2FCC4 /* RestaurantViewModel.swift */; };
+		B1C3BDBE2CFEBD3C00614649 /* LoginPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C3BDBD2CFEBD3C00614649 /* LoginPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		35E64B4E2CF7070D00443A36 /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PersonView.swift; path = UMai/PersonView.swift; sourceTree = SOURCE_ROOT; };
 		35E64B502CF7075A00443A36 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListView.swift; path = ../ListView.swift; sourceTree = "<group>"; };
 		B1BCF4832CFDCC9C00A2FCC4 /* RestaurantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
+		B1C3BDBD2CFEBD3C00614649 /* LoginPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		35463DEE2CB4E63600D4F549 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				B1C3BDBD2CFEBD3C00614649 /* LoginPageView.swift */,
 				35A58B302CF209DC0048DC62 /* CustomTabSwitcher.swift */,
 				35E64B4C2CF7068100443A36 /* HomeView.swift */,
 			);
@@ -219,6 +222,7 @@
 				35463DE12CB4E52500D4F549 /* UMaiApp.swift in Sources */,
 				35E64B512CF7075A00443A36 /* ListView.swift in Sources */,
 				B1BCF4842CFDCC9C00A2FCC4 /* RestaurantViewModel.swift in Sources */,
+				B1C3BDBE2CFEBD3C00614649 /* LoginPageView.swift in Sources */,
 				35E64B4B2CF7062C00443A36 /* tabBarView.swift in Sources */,
 				35A58B332CF209DC0048DC62 /* CustomTabSwitcher.swift in Sources */,
 			);
