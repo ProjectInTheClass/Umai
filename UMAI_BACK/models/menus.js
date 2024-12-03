@@ -1,36 +1,30 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = require("../config/db");
 
-const User = sequelize.define("User", {
-  user_id: {
+const Menu = sequelize.define("Menu", {
+  menu_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-  id: {
+  name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  MBTI: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
-  nickname: {
-    type: DataTypes.STRING,
+  price: {
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
 });
 
+// 모델 동기화 (테이블 생성)
 (async () => {
   try {
-    console.log("User table has been created.");
+    await sequelize.sync();
+    sequelize.sync({ force: true });
   } catch (error) {
     console.error("Error creating table:", error);
   }
 })();
 
-module.exports = User;
+module.exports = Menu;

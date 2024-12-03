@@ -1,7 +1,7 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('../config/db');  
+const { Sequelize, DataTypes } = require("sequelize");
+const sequelize = require("../config/db");
 
-const Restaurant = sequelize.define('Restaurant', {
+const Restaurant = sequelize.define("Restaurant", {
   restaurant_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -41,12 +41,22 @@ const Restaurant = sequelize.define('Restaurant', {
   },
   createdAt: {
     type: DataTypes.DATE,
-    defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),  
+    defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
   },
   updatedAt: {
     type: DataTypes.DATE,
-    defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),  
+    defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
   },
 });
+
+// 모델 동기화 (테이블 생성)aa
+(async () => {
+  try {
+    // await sequelize.sync();
+    // sequelize.sync({ force: true });
+  } catch (error) {
+    console.error("Error creating table:", error);
+  }
+})();
 
 module.exports = Restaurant;

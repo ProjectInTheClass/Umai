@@ -1,8 +1,9 @@
 const Restaurant = require("./models/restaurant");
+const User = require("./models/user");
 
 exports.getRestaurantById = (req, res, next) => {
   const restaurantId = req.params.restaurantId;
-  Restaurant.findByPk(restaurantId)  // Use findByPk instead of findById
+  Restaurant.findByPk(restaurantId) // Use findByPk instead of findById
     .then((restaurant) => {
       if (restaurant) {
         res.status(200).json({
@@ -32,7 +33,7 @@ exports.createRestaurant = (req, res, next) => {
     ambiance: req.body.ambiance,
     description: req.body.description,
   });
-  
+
   restaurant
     .save()
     .then((result) => {
