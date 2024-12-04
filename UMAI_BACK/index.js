@@ -29,9 +29,10 @@ passportConfig(); // 패스포트 설정
 app.use(cookieParser("12"));
 app.use(
   session({
+    secret: "12",
     resave: false,
     saveUninitialized: false,
-    secret: process.env.COOKIE_SECRET,
+    // secret: process.env.COOKIE_SECRET,
     cookie: {
       httpOnly: true,
       secure: false,
@@ -50,7 +51,7 @@ app.set("view engine", "ejs"); // Set view engine to EJS
 
 // Routes
 app.use("/api/restaurants", restaurantRouter);
-app.use("/auth", require("./routers/auth"));
+app.use("/auth", authRouter);
 
 // Test route to check if server is working
 app.get("/", (req, res) => {

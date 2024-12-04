@@ -2,15 +2,20 @@ const express = require("express");
 const passport = require("passport");
 const bcrypt = require("bcrypt");
 const router = express.Router();
+const isNotLoggedIn = require("../middlewares/auth").isNotLoggedIn;
+const isLoggedIn = require("../middlewares/auth").isLoggedIn;
+const User = require("../models/user");
 
 router.post("/join", isNotLoggedIn, async (req, res, next) => {
-  const { id, password, user_name } = req.body; // 프론트에서 보낸 폼데이터를 받는다.
+  console.log("회원가입 요청");
+  const { id, password, user_name, nickname } = req.body; // 프론트에서 보낸 폼데이터를 받는다.
 
   try {
     // 기존에 이메일로 가입한 사람이 있나 검사 (중복 가입 방지)
     const exUser = await User.findOne({ where: { id } });
     if (exUser) {
       res.json({ message: "이미 가입된 이메일입니다." });
+      return;
     }
 
     // 정상적인 회원가입 절차면 해시화
@@ -22,12 +27,15 @@ router.post("/join", isNotLoggedIn, async (req, res, next) => {
         id,
         user_name,
         password: hash,
+        nickname,
       });
-      // console.log("Data saved successfully.");
+      console.log("회원가입 완료");
     } catch (error) {
       console.error("Error saving data:", error);
+      res.json({ message: "회원가입에 실패했습니다." });
+      return;
     }
-    res.json({ message: "회원가입이 완료되었습니다." });
+    // res.json({ message: "회원가입이 완료되었습니다." });
   } catch (error) {
     console.error(error);
     next(error);
@@ -83,3 +91,5 @@ router.get("/logout", isLoggedIn, (req, res) => {
   });
   // res.redirect("/");
 });
+
+module.exports = router;
