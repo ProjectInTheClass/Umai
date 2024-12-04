@@ -54,14 +54,13 @@
   <body>
     <header>UMAI</header>
     <main>
-      <ul>
-        <% restaurants.forEach(function(restaurant) { %>
-        <li>
-          <strong><%= restaurant.name %></strong><br />
-          <span><%= restaurant.description %></span>
-        </li>
-        <% }); %>
-      </ul>
+      <ul></ul>
+      <form action="/auth/join" method="post">
+        <p><input type="text" name="id" placeholder="아이디" /></p>
+        <p><input type="password" name="password" placeholder="비밀번호" /></p>
+        <p><input type="text" name="user_name" placeholder="이름" /></p>
+        <p><input type="submit" value="회원가입" /></p>
+      </form>
     </main>
     <footer>
       <div>홈</div>

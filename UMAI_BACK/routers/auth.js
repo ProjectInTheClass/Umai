@@ -1,6 +1,7 @@
 const express = require("express");
 const passport = require("passport");
 const bcrypt = require("bcrypt");
+const router = express.Router();
 
 router.post("/join", isNotLoggedIn, async (req, res, next) => {
   const { id, password, user_name } = req.body; // 프론트에서 보낸 폼데이터를 받는다.
