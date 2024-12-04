@@ -13,7 +13,7 @@ struct ContentView: View {
         ZStack {
             TabView {
                 
-                HomeView()
+                Login()
                     .tabItem {
                         Image(systemName: "doc.text.image")
                         Text("main")

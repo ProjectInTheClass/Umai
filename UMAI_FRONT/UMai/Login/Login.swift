@@ -15,8 +15,10 @@ struct SurveyQuestion: Identifiable {
 
 // 사용자 데이터 모델
 struct UserData: Codable {
-    var email: String
+    var user_name: String
+    var id: String
     var password: String
+    var nickname: String
 }
 
 // 메인 뷰 모델
@@ -46,8 +48,10 @@ class SurveyLoginViewModel: ObservableObject {
     ]
     
     @Published var showLoginScreen = false
-    @Published var email = ""
+    @Published var id = ""
     @Published var password = ""
+    @Published var user_name = ""
+    @Published var nickname = ""
     
     func nextQuestion() {
         if currentQuestionIndex < questions.count - 1 {
@@ -59,7 +63,7 @@ class SurveyLoginViewModel: ObservableObject {
     
     func handleLogin() {
         // 로그인 로직 구현
-        print("Login attempted with email: \(email)")
+        print("Login attempted with email: \(id)")
     }
 }
 struct Login: View {

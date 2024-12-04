@@ -1,23 +1,24 @@
 //
-//  LoginView.swift
+//  SignupView.swift
 //  UMai
 //
-//  Created by PeterPark on 12/3/24.
+//  Created by PeterPark on 12/4/24.
 //
 
 import SwiftUI
-//id pw user_name nickname
 
-struct LoginView: View {
+struct SignupView: View {
     @ObservedObject var viewModel: SurveyLoginViewModel
        
        var body: some View {
            VStack(spacing: 20) {
-               
-               
                Text("Sign up")
                    .font(.largeTitle)
                    .padding(.bottom, 30)
+               
+//               TextField("name", text: $viewModel.name)
+//                   .textFieldStyle(RoundedBorderTextFieldStyle())
+//                   .autocapitalization(.none)
                
                TextField("id", text: $viewModel.id)
                    .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -26,17 +27,8 @@ struct LoginView: View {
                SecureField("password", text: $viewModel.password)
                    .textFieldStyle(RoundedBorderTextFieldStyle())
                
-               TextField("name", text: $viewModel.user_name)
-                   .textFieldStyle(RoundedBorderTextFieldStyle())
-                   .autocapitalization(.none)
-               
-               
-               TextField("nick", text: $viewModel.nickname)
-                   .textFieldStyle(RoundedBorderTextFieldStyle())
-                   .autocapitalization(.none)
-               
                Button(action: viewModel.handleLogin) {
-                   Text("로그인")
+                   Text("Sign in")
                        .font(.headline)
                        .foregroundColor(.white)
                        .frame(maxWidth: .infinity)
@@ -53,3 +45,7 @@ struct LoginView: View {
            .padding()
        }
 }
+
+//#Preview {
+//    SignupView()
+//}
