@@ -26,6 +26,7 @@
 		35E64B4F2CF7070D00443A36 /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E64B4E2CF7070D00443A36 /* PersonView.swift */; };
 		35E64B512CF7075A00443A36 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E64B502CF7075A00443A36 /* ListView.swift */; };
 		B1BCF4842CFDCC9C00A2FCC4 /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BCF4832CFDCC9C00A2FCC4 /* RestaurantViewModel.swift */; };
+		F5865BC72CFFFD76001D2FF4 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5865BC62CFFFD76001D2FF4 /* RegisterViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		35E64B4E2CF7070D00443A36 /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PersonView.swift; path = UMai/PersonView.swift; sourceTree = SOURCE_ROOT; };
 		35E64B502CF7075A00443A36 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListView.swift; path = ../ListView.swift; sourceTree = "<group>"; };
 		B1BCF4832CFDCC9C00A2FCC4 /* RestaurantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
+		F5865BC62CFFFD76001D2FF4 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,9 @@
 				35463DE22CB4E52500D4F549 /* ContentView.swift */,
 				35C653902D0004390094F446 /* Model */,
 				357448212CFEC2F800FB7ED6 /* Login */,
+				355C37322CB8FB74000D38C4 /* restaurant.swift */,
+				B1BCF4832CFDCC9C00A2FCC4 /* RestaurantViewModel.swift */,
+				F5865BC62CFFFD76001D2FF4 /* RegisterViewModel.swift */,
 				354FA08B2CD33C9900ACC3BA /* Font */,
 				3534D12C2CD2605100E256FB /* Info.plist */,
 				35463DF02CB4E64E00D4F549 /* Sub */,
@@ -249,6 +254,8 @@
 				35E64B512CF7075A00443A36 /* ListView.swift in Sources */,
 				B1BCF4842CFDCC9C00A2FCC4 /* RestaurantViewModel.swift in Sources */,
 				35E64B4B2CF7062C00443A36 /* tabBarView.swift in Sources */,
+				35A58B332CF209DC0048DC62 /* CustomTabSwitcher.swift in Sources */,
+				F5865BC72CFFFD76001D2FF4 /* RegisterViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

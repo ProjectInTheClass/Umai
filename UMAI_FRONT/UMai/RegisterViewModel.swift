@@ -1,52 +1,73 @@
 //
-//  RestaurantViewModel.swift
+//  UserViewModel.swift
 //  UMai
 //
-//  Created by 전주환 on 11/28/24.
+//  Created by 김진태 on 11/28/24.
 //
 
 import Foundation
-import SwiftUI
 
-class RestaurantViewModel: ObservableObject {
-    @Published var restaurants: [Restaurant] = []
-
-    // Make an API call to fetch restaurant data
-    func fetchRestaurants() {
-        guard let url = URL(string: "http://localhost:3333/api/restaurants") else {
+class UserViewModel: ObservableObject {
+    // Function to send user registration request
+    func registerUser(name: String, email: String, password: String) {
+        guard let url = URL(string: "http://localhost:3333/auth/join") else {
             print("Invalid URL")
             return
         }
-
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        
+        // Create the request body
+        let requestBody: [String: Any] = [
+//            "user_name": user_name,
+            "email": email,
+            "password": password,
+//            "nickname": nickname
+        ]
+        
+        // Convert the dictionary to JSON data
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: requestBody) else {
+            print("Failed to encode request body")
+            return
+        }
+        
+        // Create a POST request
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
+        
+        // Send the request
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
-                print("Error fetching data: \(error)")
+                print("Error sending request: \(error)")
                 return
             }
-
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                print("Invalid response")
+                return
+            }
+            
+            // Debug: Check status code
+            print("HTTP Response Status Code: \(httpResponse.statusCode)")
+            
             guard let data = data else {
                 print("No data received")
                 return
             }
-
-            // Debug: Check raw data
+            
+            // Debug: Check raw response data
             if let jsonString = String(data: data, encoding: .utf8) {
-                print("Received data: \(jsonString)")
+                print("Response data: \(jsonString)")
             }
-
-            // Decode the data into your model
-            do {
-                let decoder = JSONDecoder()
-                let fetchedRestaurants = try decoder.decode([Restaurant].self, from: data)
-                DispatchQueue.main.async {
-                    self.restaurants = fetchedRestaurants
-                    print("Fetched restaurants: \(fetchedRestaurants)") // Debug: Check fetched data
-                }
-            } catch {
-                print("Failed to decode data: \(error)")
+            
+            // Handle the response
+            if httpResponse.statusCode == 201 {
+                print("User registered successfully!")
+            } else {
+                print("Failed to register user. Status code: \(httpResponse.statusCode)")
             }
         }
-
+        
         task.resume()
     }
 }
