@@ -15,6 +15,10 @@ const Restaurant = sequelize.define("Restaurant", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  menu: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   taste: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -37,6 +41,10 @@ const Restaurant = sequelize.define("Restaurant", {
   },
   description: {
     type: DataTypes.TEXT,
+    allowNull: true,
+  },
+  foodImage: {
+    type: DataTypes.STRING,
     allowNull: true,
   },
   createdAt: {
