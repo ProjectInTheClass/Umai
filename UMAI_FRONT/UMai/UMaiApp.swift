@@ -11,7 +11,7 @@ import SwiftUI
 struct UMaiApp: App {
     var body: some Scene {
         WindowGroup {
-            tabBarView()
+            SurveyView()
         }
     }
 }

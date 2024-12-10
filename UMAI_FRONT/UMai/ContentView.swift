@@ -13,7 +13,7 @@ struct ContentView: View {
         ZStack {
             TabView {
                 
-                Login()
+                HomeView()
                     .tabItem {
                         Image(systemName: "doc.text.image")
                         Text("main")
@@ -34,7 +34,7 @@ struct ContentView: View {
                         Text("Person")
                     }
             }
-            .accentColor(Color("brown"))
+            .accentColor(Color("lightRed"))
         }
     }
 }
