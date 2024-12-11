@@ -12,6 +12,7 @@ const session = require("express-session");
 
 const sequelize = require("./config/db");
 
+// Sync Sequelize models with the database
 sequelize
   .sync({ force: false })
   .then(() => {
