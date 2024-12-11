@@ -228,4 +228,7 @@ iOSInjectionProject/
 # ignore all files in the models/ directory
 models/*
 
+# config/db.js 무시하기
+config/db.js
+
 # End of https://www.toptal.com/developers/gitignore/api/swift,node
