@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ListView: View {
-    @StateObject private var viewModel = RestaurantViewModel() // 뷰모델 초기화
+    @StateObject private var viewModel = RestaurantViewModel()
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -41,18 +42,18 @@ struct ListView: View {
                 }
             }
             .navigationBarHidden(true)
-            .navigationDestination(for: Restarurant.self) { restaurant in
-                DetailView(restaurant: restaurant)
-            }
             .onAppear {
-                viewModel.fetchRestaurants() // 뷰가 나타날 때 데이터 가져오기
+                viewModel.fetchRestaurants()
             }
+//            .navigationDestination(for: Restaurant.self) { restaurant in
+//                DetailView(restaurant: restaurant)
+//            }
         }
     }
 }
 
 struct RestaurantCard: View {
-    let restaurant: Restarurant
+    let restaurant: Restaurant
     
     var body: some View {
         RoundedRectangle(cornerRadius: 12)
@@ -61,7 +62,7 @@ struct RestaurantCard: View {
             .frame(height: 300)
             .overlay(
                 VStack(alignment: .leading, spacing: 8) {
-                    Image(restaurant.imageName)
+                    Image("Sushi")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: .infinity)
@@ -81,7 +82,7 @@ struct RestaurantCard: View {
                         .font(.subheadline)
                         .foregroundColor(.gray)
                     
-                    Text("대표메뉴: \(restaurant.menu.joined(separator: ", "))")
+                    Text("대표메뉴: \(restaurant.menu)")
                         .font(.system(size: 14))
                         .foregroundColor(.gray)
                         .lineLimit(1)
