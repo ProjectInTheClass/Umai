@@ -233,4 +233,6 @@ models/*
 # config/db.js 무시하기
 config/db.js
 
+.DS_Store
+
 # End of https://www.toptal.com/developers/gitignore/api/swift,node
