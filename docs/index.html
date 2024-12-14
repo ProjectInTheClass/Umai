@@ -1,22 +1,62 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My GitHub Page</title>
-  </head>
-  <body>
-    <h1>Welcome to my GitHub page!</h1>
-    <p>This is the index.html file for my GitHub page.</p>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iOS 앱 스크린샷 페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #333;
+            margin-top: 20px;
+        }
+        .screenshot-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        .screenshot {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            height: auto;
+        }
+        footer {
+            margin-top: 40px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>iOS 앱 스크린샷 모음</h1>
+    <p>이 페이지는 앱의 주요 화면들을 포함하고 있습니다.</p>
 
-    <h2>Image 1</h2>
-    <img src="image1.jpg" alt="Image 1">
+    <div class="screenshot-container">
+        <div>
+            <h2>맛BTI 테스트</h2>
+            <img src="Simulator Screenshot - iPhone 15 Pro - 2024-12-10 at 17.36.49.png" alt="Screenshot 1" class="screenshot">
+        </div>
+        <div>
+            <h2>음식점 상세 정보</h2>
+            <img src="Simulator Screenshot - iPhone 15 Pro - 2024-12-10 at 17.38.46.png" alt="Screenshot 2" class="screenshot">
+        </div>
+        <div>
+            <h2>VIP 혜택 화면</h2>
+            <img src="Simulator Screenshot - iPhone 15 Pro - 2024-12-10 at 17.38.52.png" alt="Screenshot 3" class="screenshot">
+        </div>
+    </div>
 
-    <h2>Image 2</h2>
-    <img src="image2.jpg" alt="Image 2">
-
-    <h2>Image 3</h2>
-    <img src="image3.jpg" alt="Image 3">
-
-    <h2>Image 4</h2>
-    <img src="image4.jpg" alt="Image 4">
-  </body>
+    <footer>
+        <p>&copy; 2024 앱 스크린샷 페이지. 모든 권리 보유.</p>
+    </footer>
+</body>
 </html>
