@@ -15,25 +15,70 @@ struct SurveyView: View {
         "H": 0, "S": 0,
         "V": 0, "P": 0
     ]
-    @State private var showLoginScreen = false
-    @State private var progress: CGFloat = 0.2
+    @State private var showMatBTIScreen = false
+    @State private var progress: CGFloat = 0
     
     let questions = [
         SurveySection(title: "맛의 취향", questions: [
-            SurveyQuestion(text: "매운 음식을 보면 꼭 한번 도전해보고 싶어요!", positiveType: "F", negativeType: "C", subtitle: "당신의 맵찔이 지수는?")
+            SurveyQuestion(text: "매운 음식을 보면 꼭 한번 도전해보고 싶다.", positiveType: "F", negativeType: "C", subtitle: "맛의 취향")
+        ]),
+        SurveySection(title: "맛의 취향", questions: [
+            SurveyQuestion(text: "강한 양념보다는 깔끔한 본연의 맛을 더 즐긴다.", positiveType: "C", negativeType: "F", subtitle: "맛의 취향")
+        ]),
+        SurveySection(title: "맛의 취향", questions: [
+            SurveyQuestion(text: "단맛이 강한 디저트가 항상 끌린다.", positiveType: "F", negativeType: "C", subtitle: "맛의 취향")
+        ]),
+        SurveySection(title: "맛의 취향", questions: [
+            SurveyQuestion(text: "짠 음식은 조금 부담스러워서 자주 먹지 않는다.", positiveType: "C", negativeType: "F", subtitle: "맛의 취향")
+        ]),
+        SurveySection(title: "맛의 취향", questions: [
+            SurveyQuestion(text: "진한 양념으로 맛을 낸 고기가 순한 국물요리보다 더 맛있다.", positiveType: "F", negativeType: "C", subtitle: "맛의 취향")
         ]),
         SurveySection(title: "도전 정신", questions: [
-            SurveyQuestion(text: "새로운 메뉴가 있다면 꼭 먹어보고 싶어요!", positiveType: "A", negativeType: "T", subtitle: "호기심 가득한 미식가?")
+            SurveyQuestion(text: "새로운 음식이 눈에 띄면 바로 먹어보고 싶다.", positiveType: "A", negativeType: "T", subtitle: "도전 정신")
+        ]),
+        SurveySection(title: "도전 정신", questions: [
+            SurveyQuestion(text: "외국 요리보다는 한식이 더 편하고 익숙하다.", positiveType: "T", negativeType: "A", subtitle: "도전 정신")
+        ]),
+        SurveySection(title: "도전 정신", questions: [
+            SurveyQuestion(text: "퓨전 음식보다는 전통 요리가 더 끌린다.", positiveType: "A", negativeType: "T", subtitle: "도전 정신")
+        ]),
+        SurveySection(title: "도전 정신", questions: [
+            SurveyQuestion(text: "내가 모르는 재료가 들어간 음식을 먹는 것이 흥미롭다.", positiveType: "A", negativeType: "T", subtitle: "도전 정신")
+        ]),
+        SurveySection(title: "도전 정신", questions: [
+            SurveyQuestion(text: "새로운 음식점보다는 항상 가던 음식점에 가는 것이 더 좋다.", positiveType: "T", negativeType: "A", subtitle: "도전 정신")
         ]),
         SurveySection(title: "식감 선호도", questions: [
-            SurveyQuestion(text: "바삭바삭한 간식이 제일 좋아요!", positiveType: "H", negativeType: "S", subtitle: "바삭 vs 말랑")
+            SurveyQuestion(text: "바삭한 식감의 간식을 더 선호한다.", positiveType: "H", negativeType: "S", subtitle: "식감 선호도")
+        ]),
+        SurveySection(title: "식감 선호도", questions: [
+            SurveyQuestion(text: "부드러운 디저트를 먹으면 기분이 더 좋아진다.", positiveType: "S", negativeType: "H", subtitle: "식감 선호도")
+        ]),
+        SurveySection(title: "식감 선호도", questions: [
+            SurveyQuestion(text: "단단한 빵보다 말랑한 빵을 더 자주 고른다.", positiveType: "S", negativeType: "H", subtitle: "식감 선호도")
+        ]),
+        SurveySection(title: "식감 선호도", questions: [
+            SurveyQuestion(text: "크림처럼 부드러운 식감보다 씹히는 재미가 있는 음식이 더 좋다.", positiveType: "H", negativeType: "S", subtitle: "식감 선호도")
+        ]),
+        SurveySection(title: "식감 선호도", questions: [
+            SurveyQuestion(text: "튀김 요리는 바삭할수록 더 맛있다고 생각한다.", positiveType: "H", negativeType: "S", subtitle: "식감 선호도")
         ]),
         SurveySection(title: "가치 기준", questions: [
-            SurveyQuestion(text: "양이 많고 가성비 좋은 음식이 최고예요!", positiveType: "V", negativeType: "P", subtitle: "실속파 vs 분위기파")
+            SurveyQuestion(text: "분위기보다는 음식의 가격대비 양이 더 중요하다.", positiveType: "V", negativeType: "P", subtitle: "가치 기준")
         ]),
-        SurveySection(title: "마지막 질문", questions: [
-            SurveyQuestion(text: "특별한 날엔 분위기 좋은 레스토랑에서 먹고 싶어요!", positiveType: "P", negativeType: "V", subtitle: "당신의 선택은?")
-        ])
+        SurveySection(title: "가치 기준", questions: [
+            SurveyQuestion(text: "고급 레스토랑에서의 특별한 경험이 값진 돈이라고 생각한다.", positiveType: "P", negativeType: "V", subtitle: "가치 기준")
+        ]),
+        SurveySection(title: "가치 기준", questions: [
+            SurveyQuestion(text: "음식의 맛보다 가격이 비싸면 가성비가 떨어진다고 느낀다.", positiveType: "V", negativeType: "P", subtitle: "가치 기준")
+        ]),
+        SurveySection(title: "가치 기준", questions: [
+            SurveyQuestion(text: "분위기 좋은 곳에서 느긋하게 식사하는 것을 즐긴다.", positiveType: "P", negativeType: "V", subtitle: "가치 기준")
+        ]),
+        SurveySection(title: "가치 기준", questions: [
+            SurveyQuestion(text: "한 끼를 해결할 수 있는 저렴한 배달 음식을 더 자주 이용한다.", positiveType: "V", negativeType: "P", subtitle: "가치 기준")
+        ]),
     ]
     
     var body: some View {
@@ -96,7 +141,7 @@ struct SurveyView: View {
                         .font(.custom("DMSerifDisplay-Regular", size: 16))
                         .foregroundColor(.gray)
                     
-                    Text("\(currentPage + 1)/5")
+                    Text("\(currentPage + 1)/20")
                         .font(.custom("DMSerifDisplay-Regular", size: 20))
                         .foregroundColor(Color("lightRed"))
                         .padding(.vertical, 5)
@@ -152,8 +197,8 @@ struct SurveyView: View {
                 Spacer()
             }
         }
-        .fullScreenCover(isPresented: $showLoginScreen) {
-            LoginView()
+        .fullScreenCover(isPresented: $showMatBTIScreen) {
+            MatBtiResultView()
         }
     }
     
@@ -165,7 +210,7 @@ struct SurveyView: View {
             }
         } else {
             calculateResult()
-            showLoginScreen = true
+            showMatBTIScreen = true
         }
     }
     
@@ -180,6 +225,9 @@ struct SurveyView: View {
     }
     
     private func calculateResult() {
+        //Debugging
+        print("Scores: F=\(scores["F"]!), C=\(scores["C"]!), A=\(scores["A"]!), T=\(scores["T"]!), H=\(scores["H"]!), S=\(scores["S"]!), V=\(scores["V"]!), P=\(scores["P"]!)")
+        
         let result = [
             scores["F"]! > scores["C"]! ? "F" : "C",
             scores["A"]! > scores["T"]! ? "A" : "T",
