@@ -7,6 +7,8 @@ const isLoggedIn = require("../middlewares/auth").isLoggedIn;
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 
+const secretKey = "1234"; // 전역 상수로 관리
+
 router.post("/join", isNotLoggedIn, async (req, res, next) => {
   console.log("회원가입 요청");
   const { id, password, user_name, nickname } = req.body; // 프론트에서 보낸 폼데이터를 받는다.
@@ -72,7 +74,7 @@ router.post("/login", isNotLoggedIn, async (req, res, next) => {
     // 로그인 성공 시, JWT 토큰 생성
     const token = jwt.sign(
       { id: user.id, user_name: user.user_name }, // 페이로드: 사용자 정보
-      "yourSecretKey", // 비밀 키
+      "1234", // 비밀 키
       { expiresIn: "1h" } // 토큰 만료 시간 (예: 1시간)
     );
 
@@ -108,6 +110,51 @@ router.get("/logout", isLoggedIn, (req, res) => {
     }
   });
   // res.redirect("/");
+});
+
+// 토큰 검증 미들웨어
+const verifyToken = (req, res, next) => {
+  const token = req.headers.authorization?.split(" ")[1]; // Bearer 토큰에서 실제 토큰만 추출
+
+  if (!token) {
+    return res.status(401).json({ message: "토큰이 없습니다." });
+  }
+
+  try {
+    const decoded = jwt.verify(token, "1234"); // 토큰 검증
+    req.user = decoded; // 검증 성공 시, 사용자 정보를 req에 추가
+    next();
+  } catch (err) {
+    console.error("JWT 검증 실패: ", err);
+    return res.status(401).json({ message: "유효하지 않은 토큰입니다." });
+  }
+};
+
+router.get("/me", verifyToken, async (req, res) => {
+  try {
+    const user = await User.findOne({
+      where: { id: req.user.id }, // JWT 페이로드에서 가져온 사용자 ID로 데이터 조회
+    });
+
+    console.log("user : ", user);
+
+    if (!user) {
+      return res.status(404).json({ message: "사용자를 찾을 수 없습니다." });
+    }
+
+    // 사용자 정보 반환
+    res.json({
+      id: user.id,
+      user_name: user.user_name,
+      nickname: user.nickname,
+      MBTI: user.MBTI,
+      matBTI: user.matBTI,
+      favor: user.favor,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "서버 오류" });
+  }
 });
 
 module.exports = router;

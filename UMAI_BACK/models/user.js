@@ -23,6 +23,14 @@ const User = sequelize.define("User", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  matBTI: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  favor: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
 });
 
 (async () => {
