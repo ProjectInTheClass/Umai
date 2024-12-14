@@ -1,1 +1,82 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Umai</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .intro {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 20px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .card h2 {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Umai</h1>
+  </header>
+
+  <div class="container">
+    <div class="intro">
+      <p>Umai is a food recommendation app that helps you discover the best dishes based on your taste preferences.</p>
+    </div>
+    <div class="content">
+      <div class="card">
+        <img src="images/omurice-factory.jpg" alt="Omurice Factory">
+        <h2>Omurice Factory</h2>
+        <p>A cost-effective, upscale restaurant for Hanyang University students.</p>
+      </div>
+      <div class="card">
+        <img src="images/rice-cake-heaven.jpg" alt="Rice Cake Heaven">
+        <h2>Rice Cake Heaven</h2>
+        <p>A delightful rice cake-focused eatery with a variety of flavors.</p>
+      </div>
+    </div>
+  </div>
