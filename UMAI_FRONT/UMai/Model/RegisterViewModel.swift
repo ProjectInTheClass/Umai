@@ -9,7 +9,7 @@ import Foundation
 
 class UserViewModel: ObservableObject {
     // Function to send user registration request
-    func registerUser(name: String, email: String, password: String) {
+    func registerUser(user_name : String, id: String, password: String, mbti: String) {
         guard let url = URL(string: "http://localhost:3333/auth/join") else {
             print("Invalid URL")
             return
@@ -17,10 +17,10 @@ class UserViewModel: ObservableObject {
         
         // Create the request body
         let requestBody: [String: Any] = [
-//            "user_name": user_name,
-            "email": email,
+            "id": id,
             "password": password,
-//            "nickname": nickname
+            "nickname": user_name,
+            "mbti": mbti,
         ]
         
         // Convert the dictionary to JSON data

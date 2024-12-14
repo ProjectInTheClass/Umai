@@ -12,8 +12,11 @@ struct SignupView: View {
     @State private var password: String = ""
     @State private var showHomeView = false
     @State private var showSignUpView = false
+    @State private var showLoginView = false
     @State private var id: String = ""
     @State private var name: String = ""
+    @State private var mbti: String = ""
+    @StateObject private var userViewModel = UserViewModel()
     
     var body: some View {
         NavigationView {
@@ -32,34 +35,41 @@ struct SignupView: View {
                     VStack(spacing: 20) {
                         // Email Field
                         S_CustomTextField(
-                            placeholder: "id",
+                            placeholder: "idd",
                             text: $id,
-                            imageName: "face.smiling"
-                        )
-                        
-                        S_CustomTextField(
-                            placeholder: "name",
-                            text: $name,
                             imageName: "envelope.fill"
                         )
                         
-                        
-                        S_CustomTextField(
-                            placeholder: "Email",
-                            text: $email,
-                            imageName: "envelope.fill"
-                        )
-                        
-                        // Password Field
                         S_CustomSecureField(
                             placeholder: "Password",
                             text: $password,
                             imageName: "lock.fill"
                         )
                         
-                        // Login Button
+                        S_CustomTextField(
+                            placeholder: "name",
+                            text: $name,
+                            imageName: "face.smiling"
+                        )
+                        
+                        S_CustomSecureField(
+                            placeholder: "mbti",
+                            text: $mbti,
+                            imageName: "face.smiling"
+                        )
+                        
+                        
+                        // 회원가입 Button
                         Button(action: {
-                            handleLogin()
+//                            handleSignUp()
+                            // Call registerUser method
+                            userViewModel.registerUser(
+                                user_name: name,
+                                id: id,
+                                password: password,
+                                mbti: mbti
+                            )
+                            showLoginView = true
                         }) {
                             Text("SignUP")
                                 .font(.custom("DMSerifDisplay-Regular", size: 20))
@@ -92,16 +102,19 @@ struct SignupView: View {
                     Spacer()
                 }
             }
-            .fullScreenCover(isPresented: $showHomeView) {
-                ContentView()
+            .fullScreenCover(isPresented: $showLoginView) {
+                LoginView()
             }
         }
     }
     
-    private func handleLogin() {
+    private func handleSignUp() {
         // Add your login logic here
         // For now, we'll just navigate to HomeView
-        showHomeView = true
+        
+        // Call registerUser method
+ 
+        showLoginView = true
     }
 }
 
