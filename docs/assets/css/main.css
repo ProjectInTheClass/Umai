@@ -791,7 +791,7 @@ input, select, textarea {
 
 		input[type="checkbox"].color2 + label:before,
 		input[type="radio"].color2 + label:before {
-			color: #e37b7c;
+			color: #714A49;
 		}
 
 		input[type="checkbox"].color3 + label:before,
@@ -2783,7 +2783,7 @@ input, select, textarea {
 			.panel > *.color2 {
 				background-image: url("../../images/overlay.png"), linear-gradient(135deg, rgba(114, 97, 147, 0.25) 25%, rgba(227, 123, 124, 0.25) 50%, rgba(255, 228, 180, 0.25));
 				background-size: 128px 128px, auto;
-				background-color: #e37b7c;
+				background-color: #714A49;
 			}
 
 			.panel > *.color3 {
