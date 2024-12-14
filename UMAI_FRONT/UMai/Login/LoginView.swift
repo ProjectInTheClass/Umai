@@ -9,12 +9,13 @@ import SwiftUI
 //id pw user_name nickname
 
 struct LoginView: View {
-    @State private var email: String = ""
+    @State private var id: String = ""
     @State private var password: String = ""
     @State private var showHomeView = false
     @State private var showSignUpView = false
     @State private var showAlert = false
     @State private var alertMessage = ""
+    @StateObject private var userViewModel = UserViewModel()
     
     var body: some View {
         NavigationView {
@@ -34,7 +35,7 @@ struct LoginView: View {
                         // Email Field
                         CustomTextField(
                             placeholder: "Email",
-                            text: $email,
+                            text: $id,
                             imageName: "envelope.fill"
                         )
                         
@@ -47,6 +48,7 @@ struct LoginView: View {
                         
                         // Login Button
                         Button(action: {
+                            
                             handleLogin()
                         }) {
                             Text("Login")
@@ -122,10 +124,27 @@ struct LoginView: View {
     }
     
     private func handleLogin() {
-        // Add your login logic here
-        // For now, we'll just navigate to HomeView
-        showHomeView = true
+        // 로그인 요청을 처리
+        userViewModel.loginUser(id: id, password: password)
+        
+        // 로그인 후 토큰이 UserDefaults에 저장되었는지 확인
+        if let token = UserDefaults.standard.string(forKey: "authToken") {
+            // 로그인 성공 시 HomeView로 이동
+            print("Login successful! Token: \(token)")
+            
+            // 홈 화면으로 이동하는 코드 (예: NavigationLink, .sheet, .fullScreenCover 등 사용 가능)
+            // 예시로 .fullScreenCover를 사용할 수 있습니다.
+            DispatchQueue.main.async {
+                // 여기서 화면 전환을 처리 (예: HomeView로 이동)
+                // 예: self.isLoggedIn = true
+                showHomeView = true
+            }
+        } else {
+            // 로그인 실패 시 오류 메시지를 표시
+            print("Login failed")
+        }
     }
+
 }
 
 // Custom TextField with icon

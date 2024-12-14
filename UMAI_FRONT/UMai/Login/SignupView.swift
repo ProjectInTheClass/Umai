@@ -18,6 +18,9 @@ struct SignupView: View {
     @State private var mbti: String = ""
     @StateObject private var userViewModel = UserViewModel()
     
+    @State private var showAlert = false
+    @State private var alertMessage = ""
+    
     var body: some View {
         NavigationView {
             ZStack {

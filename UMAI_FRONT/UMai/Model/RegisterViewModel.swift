@@ -70,4 +70,53 @@ class UserViewModel: ObservableObject {
         
         task.resume()
     }
+    
+    func loginUser(id: String, password: String) {
+        guard let url = URL(string: "http://localhost:3333/auth/login") else {
+            print("Invalid URL")
+            return
+        }
+        
+        let requestBody: [String: Any] = [
+            "id": id,
+            "password": password
+        ]
+        
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: requestBody) else {
+            print("Failed to encode request body")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error sending request: \(error)")
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                print("Invalid response")
+                return
+            }
+            
+            if httpResponse.statusCode == 200,
+               let data = data,
+               let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+               let token = jsonResponse["token"] as? String {
+                print("Login successful! Token: \(token)")
+                UserDefaults.standard.set(token, forKey: "authToken")
+            } else {
+                let errorMessage = "Login failed. Status code: \(httpResponse.statusCode)"
+                print(errorMessage)
+            }
+        }
+        task.resume()
+    }
+
+
+
 }
