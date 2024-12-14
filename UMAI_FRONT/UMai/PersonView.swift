@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PersonView: View {
+    @State private var showLoginView = false
     var body: some View {
         NavigationView {
             ZStack {
@@ -40,7 +41,8 @@ struct PersonView: View {
                             }
                             
                             Button(action: {
-                                // Logout action
+                                showLoginView = true
+                                
                             }) {
                                 HStack {
                                     Text("Logout")
@@ -60,6 +62,9 @@ struct PersonView: View {
                     }
                     .padding(.top)
                 }
+            }
+            .fullScreenCover(isPresented: $showLoginView) {
+                LoginView()
             }
             .navigationBarHidden(true)
         }
