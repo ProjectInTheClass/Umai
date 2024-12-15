@@ -6,7 +6,7 @@
 <br/>
 
 # 0. Getting Started (시작하기)
-<img src="https://github.com/docs/images/main.png" alt="박호연" width="150"> 
+<img src="https://github.com/docs/images/main.png" width="150"> 
 
 <br/>
 <br/>
