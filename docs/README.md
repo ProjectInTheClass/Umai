@@ -75,7 +75,9 @@
 
 |         |                                                        |         |
 | ------- | ------------------------------------------------------ | ------- |
-| SwiftUI | <img src="./images/swift.png" alt="swift" width="100"> | 1.11.12 |
+| SwiftUI | <img src="./images/swift.png" alt="swift" width="100"> | 5.0     |
+
+
 
 <br/>
 
