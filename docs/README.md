@@ -188,7 +188,7 @@ UMAI_BACK/
 
 ### 브랜치 전략 (Branch Strategy)
 
-우리의 전략은 단순하고 효율적인 **Main Branch 작업 방식**을 따릅니다.
+저희는 전략은 단순하고 효율적인 **Main Branch 작업 방식**을 따릅니다.
 
 #### Main Branch
 
