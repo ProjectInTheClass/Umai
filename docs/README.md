@@ -96,7 +96,56 @@
 <br/>
 <br/>
 
-## 6. Project Structure (프로젝트 구조)
+# 6. Project Structure (프로젝트 구조)
+
+## 6.1 Frontend
+
+```plaintext
+
+UMai/
+├── UMAiApp                     # 앱의 메인 엔트리 포인트
+├── ContentView                 # 앱의 전체적인 컨텐츠를 관리하는 뷰
+│
+├── Model/                      # 데이터 모델과 관련된 파일들
+│   ├── restaurant              # 레스토랑 모델 데이터
+│   ├── RestaurantViewModel     # 레스토랑 데이터를 처리하는 ViewModel
+│   └── RegisterViewModel       # 사용자 등록 관련 데이터를 처리하는 ViewModel
+│
+├── Login/                      # 로그인 및 설문과 관련된 뷰 파일들
+│   ├── LoginView               # 로그인 화면
+│   ├── SurveyView              # 설문조사 화면
+│   ├── MatBtiResultView        # 맛BTI 결과 화면
+│   └── SignupView              # 회원가입 화면
+│
+├── Font/                       # 프로젝트에 사용되는 폰트 파일들
+│   ├── DMSerifDisplay-Italic
+│   ├── DMSerifDisplay-Regular
+│   ├── Poppins-ExtraLightItalic
+│   └── Liquefier
+│
+├── Info                        # 추가적인 정보나 데이터 파일들
+│
+├── Sub/                        # 서브 뷰와 관련된 화면들
+│   ├── ListView                # 목록 화면
+│   └── DetailView              # 상세 보기 화면
+│
+├── Person/                     # 개인화된 화면 및 기능 관련 파일들
+│   ├── PersonView              # 사용자 개인 페이지
+│   └── ShareBTIView            # 맛BTI 결과 공유 페이지
+│
+├── Main/                       # 메인 화면과 관련된 파일들
+│   └── HomeView                # 홈 화면
+│
+├── Assets                      # 이미지, 아이콘 등 정적 파일들을 저장하는 폴더
+│
+└── Preview Content/            # 프로젝트의 미리보기 관련 파일들
+    └── Preview Assets          # 미리보기에 필요한 에셋 파일
+```
+
+</br>
+</br>
+
+## 6.2 Backend
 
 ```plaintext
 UMAI_BACK/
