@@ -6,7 +6,7 @@
 <br/>
 
 # 0. Getting Started (시작하기)
-<img src="https://github.com/docs/images/main.png" width="150"> 
+<img src="https://github.com/docs/images/team.png" width="1000"> 
 
 <br/>
 <br/>
