@@ -113,7 +113,7 @@ struct LoginView: View {
                 ContentView()
             }
             .fullScreenCover(isPresented: $showSignUpView) {
-                SignupView()
+                
             }
             .alert("Error", isPresented: $showAlert) {
                 Button("OK", role: .cancel) { }

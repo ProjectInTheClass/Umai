@@ -21,6 +21,8 @@ struct SignupView: View {
     @State private var showAlert = false
     @State private var alertMessage = ""
     
+    @Binding var matBTI: String
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -70,7 +72,8 @@ struct SignupView: View {
                                 user_name: name,
                                 id: id,
                                 password: password,
-                                mbti: mbti
+                                mbti: mbti,
+                                matBTI: matBTI
                             )
                             showLoginView = true
                         }) {

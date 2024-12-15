@@ -12,7 +12,7 @@ class UserViewModel: ObservableObject {
     @Published var userInfo: [String: Any] = [:] // 사용자 정보를 저장할 Dictionary
 
     // Function to send user registration request
-    func registerUser(user_name : String, id: String, password: String, mbti: String) {
+    func registerUser(user_name : String, id: String, password: String, mbti: String, matBTI: String) {
         guard let url = URL(string: "http://localhost:3333/auth/join") else {
             print("Invalid URL")
             return
@@ -23,7 +23,8 @@ class UserViewModel: ObservableObject {
             "id": id,
             "password": password,
             "nickname": user_name,
-            "mbti": mbti,
+            "MBTI": mbti,
+            "matBTI": matBTI,
         ]
         
         // Convert the dictionary to JSON data

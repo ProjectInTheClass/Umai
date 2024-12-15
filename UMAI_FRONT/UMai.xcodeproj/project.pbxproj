@@ -24,8 +24,8 @@
 		35E64B4D2CF7068100443A36 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E64B4C2CF7068100443A36 /* HomeView.swift */; };
 		35E64B4F2CF7070D00443A36 /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E64B4E2CF7070D00443A36 /* PersonView.swift */; };
 		35E64B512CF7075A00443A36 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E64B502CF7075A00443A36 /* ListView.swift */; };
-		B196EEE32D0E2CEA00CAE647 /* MatBtiResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196EEE22D0E2CEA00CAE647 /* MatBtiResultView.swift */; };
 		B1BCF4842CFDCC9C00A2FCC4 /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BCF4832CFDCC9C00A2FCC4 /* RestaurantViewModel.swift */; };
+		F52628322D0EDCAF0088C228 /* MatBtiResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52628312D0EDCAF0088C228 /* MatBtiResultView.swift */; };
 		F5865BC72CFFFD76001D2FF4 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5865BC62CFFFD76001D2FF4 /* RegisterViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,8 +49,8 @@
 		35E64B4C2CF7068100443A36 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = ../HomeView.swift; sourceTree = "<group>"; };
 		35E64B4E2CF7070D00443A36 /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PersonView.swift; path = UMai/PersonView.swift; sourceTree = SOURCE_ROOT; };
 		35E64B502CF7075A00443A36 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListView.swift; path = ../ListView.swift; sourceTree = "<group>"; };
-		B196EEE22D0E2CEA00CAE647 /* MatBtiResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatBtiResultView.swift; path = ../../../../../../Desktop/MatBtiResultView.swift; sourceTree = "<group>"; };
 		B1BCF4832CFDCC9C00A2FCC4 /* RestaurantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RestaurantViewModel.swift; path = ../RestaurantViewModel.swift; sourceTree = "<group>"; };
+		F52628312D0EDCAF0088C228 /* MatBtiResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatBtiResultView.swift; sourceTree = "<group>"; };
 		F5865BC62CFFFD76001D2FF4 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,7 +149,7 @@
 			children = (
 				357448262CFEC33200FB7ED6 /* LoginView.swift */,
 				357448242CFEC31C00FB7ED6 /* SurveyView.swift */,
-				B196EEE22D0E2CEA00CAE647 /* MatBtiResultView.swift */,
+				F52628312D0EDCAF0088C228 /* MatBtiResultView.swift */,
 				35C6538E2CFFFEE50094F446 /* SignupView.swift */,
 			);
 			path = Login;
@@ -239,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F52628322D0EDCAF0088C228 /* MatBtiResultView.swift in Sources */,
 				355C37332CB8FB74000D38C4 /* restaurant.swift in Sources */,
 				35A58B382CF20A1C0048DC62 /* ShareBTIView.swift in Sources */,
 				35E64B4D2CF7068100443A36 /* HomeView.swift in Sources */,
@@ -247,7 +248,6 @@
 				35463DE32CB4E52500D4F549 /* ContentView.swift in Sources */,
 				357448252CFEC31C00FB7ED6 /* SurveyView.swift in Sources */,
 				35463DE12CB4E52500D4F549 /* UMaiApp.swift in Sources */,
-				B196EEE32D0E2CEA00CAE647 /* MatBtiResultView.swift in Sources */,
 				357448272CFEC33200FB7ED6 /* LoginView.swift in Sources */,
 				35C6538F2CFFFEE50094F446 /* SignupView.swift in Sources */,
 				35E64B512CF7075A00443A36 /* ListView.swift in Sources */,

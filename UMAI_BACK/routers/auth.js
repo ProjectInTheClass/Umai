@@ -11,7 +11,7 @@ const secretKey = "1234"; // 전역 상수로 관리
 
 router.post("/join", isNotLoggedIn, async (req, res, next) => {
   console.log("회원가입 요청");
-  const { id, password, user_name, nickname } = req.body; // 프론트에서 보낸 폼데이터를 받는다.
+  const { id, password, user_name, nickname, matBTI, MBTI } = req.body; // 프론트에서 보낸 폼데이터를 받는다.
 
   try {
     // 기존에 이메일로 가입한 사람이 있나 검사 (중복 가입 방지)
@@ -31,6 +31,9 @@ router.post("/join", isNotLoggedIn, async (req, res, next) => {
         user_name,
         password: hash,
         nickname,
+        matBTI,
+        MBTI,
+        favor: 0,
       });
       console.log("회원가입 완료");
     } catch (error) {

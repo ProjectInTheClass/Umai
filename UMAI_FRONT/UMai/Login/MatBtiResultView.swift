@@ -12,6 +12,7 @@ struct MatBtiResultView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var userFoodType: String = ""
     @State private var showLoginScreen = false
+    @State private var showSignupScreen = false
     
     // Description for each food type
     var foodDescription: String {
@@ -179,64 +180,84 @@ struct MatBtiResultView: View {
     }
     
     var body: some View {
-        ZStack {
-            // 배경 그라데이션
-            LinearGradient(
-                gradient: Gradient(colors: [
-                    Color("backgroundGray").opacity(0.8),
-                    Color("backgroundGray").opacity(0.3)
-                ]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
-            
-            // 장식용 동그라미들
-            Circle()
-                .fill(Color("lightRed").opacity(0.1))
-                .frame(width: 200, height: 200)
-                .offset(x: -150, y: -300)
-            
-            Circle()
-                .fill(Color("lightRed").opacity(0.1))
-                .frame(width: 150, height: 150)
-                .offset(x: 170, y: 300)
-            
-            VStack(spacing: 0) {
-                // Header
-                VStack(spacing: 8) {
-                    Text("당신의 맛BTI는...")
-                        .font(.custom("DMSerifDisplay-Regular", size: 38))
-                        .foregroundColor(Color("lightRed"))
-                        .shadow(color: Color("lightRed").opacity(0.3), radius: 2, x: 0, y: 2)
-                    
-                    Text(userFoodType)
-                        .font(.custom("DMSerifDisplay-Regular", size: 16))
-                        .foregroundColor(.gray)
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.white)
-                        )
-                    
-                    // Food Description
-                    Text(foodDescription)
-                        .font(.body)
-                        .foregroundColor(.gray)
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.white)
-                        )
-                        .padding(.top, 20)
-                }
-                .padding(.top, 20)
+        NavigationView {
+            ZStack {
+                // 배경 그라데이션
+                LinearGradient(
+                    gradient: Gradient(colors: [
+                        Color("backgroundGray").opacity(0.8),
+                        Color("backgroundGray").opacity(0.3)
+                    ]),
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .ignoresSafeArea()
                 
+                // 장식용 동그라미들
+                Circle()
+                    .fill(Color("lightRed").opacity(0.1))
+                    .frame(width: 200, height: 200)
+                    .offset(x: -150, y: -300)
+                
+                Circle()
+                    .fill(Color("lightRed").opacity(0.1))
+                    .frame(width: 150, height: 150)
+                    .offset(x: 170, y: 300)
+                
+                VStack(spacing: 0) {
+                    // Header
+                    VStack(spacing: 8) {
+                        Text("당신의 맛BTI는...")
+                            .font(.custom("DMSerifDisplay-Regular", size: 38))
+                            .foregroundColor(Color("lightRed"))
+                            .shadow(color: Color("lightRed").opacity(0.3), radius: 2, x: 0, y: 2)
+                        
+                        Text(userFoodType)
+                            .font(.custom("DMSerifDisplay-Regular", size: 16))
+                            .foregroundColor(.gray)
+                            .padding()
+                            .background(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.white)
+                            )
+                        
+                        // Food Description
+                        Text(foodDescription)
+                            .font(.body)
+                            .foregroundColor(.gray)
+                            .padding()
+                            .background(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.white)
+                            )
+                            .padding(.top, 20)
+                    }
+                    .padding(.top, 20)
+                    
+                    
+                    Button {
+                        showSignupScreen = true
+                        
+                        
+                    } label: {
+                        
+                        Text("SignUP Now!")
+                            .font(.custom("DMSerifDisplay-Regular", size: 23))
+                            .foregroundColor(Color("White"))
+                            .padding()
+                            .background(Color("lightRed"))
+                            .cornerRadius(12)
+                            .padding(.top, 58)
+                        
+                    }
+                }
+            }
+            
+            .fullScreenCover(isPresented: $showSignupScreen) {
+                SignupView(matBTI: $userFoodType)
             }
         }
-        .fullScreenCover(isPresented: $showLoginScreen) {
-            LoginView()
-        }
+
         .onAppear {
             if let storedFoodType = UserDefaults.standard.string(forKey: "userFoodType") {
                 userFoodType = storedFoodType
