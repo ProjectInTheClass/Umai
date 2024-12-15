@@ -113,6 +113,7 @@ struct LoginView: View {
                 ContentView()
             }
             .fullScreenCover(isPresented: $showSignUpView) {
+                MatBtiResultView()
                 
             }
             .alert("Error", isPresented: $showAlert) {
