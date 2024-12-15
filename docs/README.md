@@ -81,10 +81,17 @@
 
 ## 5.2 Backend
 
-|         |                                                          |         |
-| ------- | -------------------------------------------------------- | ------- |
-| Node.js | <img src="./images/nodejs.png" alt="nodejs" width="100"> | 10.12.5 |
-| MySQl   | <img src="./images/mysql.png" alt="mysql" width="100">   | 10.12.5 |
+|         |                                                          |        |
+| ------- | -------------------------------------------------------- | ------ |
+| Node.js | <img src="./images/nodejs.png" alt="nodejs" width="100"> | 23.2.0 |
+| MySQl   | <img src="./images/mysql.png" alt="mysql" width="100">   | 8.0.0  |
+
+## 5.3 Cooperation
+
+|        |                                                         |
+| ------ | ------------------------------------------------------- |
+| git    | <img src="./images/git.png" alt="nodejs" width="100">   |
+| notion | <img src="./images/notion.png" alt="mysql" width="100"> |
 
 ## 6. Project Structure (프로젝트 구조)
 
@@ -121,3 +128,23 @@ UMAI_BACK/
 ├── package.json              # 프로젝트 설정 및 종속성
 └── seed.js                   # 초기 데이터베이스 시드 스크립트
 ```
+
+## 7. Development Workflow (개발 워크플로우)
+
+### 브랜치 전략 (Branch Strategy)
+
+우리의 전략은 단순하고 효율적인 **Main Branch 작업 방식**을 따릅니다.
+
+#### Main Branch
+
+- 모든 작업과 개발은 **Main 브랜치**에서 직접 이루어집니다.
+- 배포 가능한 상태를 유지하기 위해 코드 푸시 전에 철저한 테스트를 진행합니다.
+- 팀원 간의 긴밀한 커뮤니케이션을 통해 충돌을 방지합니다.
+- Pull Request 없이, 변경 사항은 직접 Main 브랜치에 커밋합니다.
+
+#### 기타
+
+- 별도의 개발 브랜치 없이 작업하며, 완성된 기능을 바로 Main 브랜치에 반영합니다.
+- 코드 리뷰는 필요 시 구두나 비공식적으로 진행합니다.
+- 코드 작성시에 대면으로 커밋을 보고합니다.
+- 최대한 수업시간 내에 모여있는 시간에 개발을 시작하고 마무리합니다.
