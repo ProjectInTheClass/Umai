@@ -6,10 +6,8 @@
 <br/>
 
 # 0. Getting Started (시작하기)
-```bash
-$ npm start
-```
-[서비스 링크](https://club-project-one.vercel.app/)
+| <img src="https://github.com/ProjectInTheClass/Umai/blob/main/docs/images/team.png" alt="박호연" width="150"> 
+
 
 <br/>
 <br/>
