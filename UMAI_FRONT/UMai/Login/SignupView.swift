@@ -40,9 +40,9 @@ struct SignupView: View {
                     VStack(spacing: 20) {
                         // Email Field
                         S_CustomTextField(
-                            placeholder: "idd",
+                            placeholder: "ID",
                             text: $id,
-                            imageName: "envelope.fill"
+                            imageName: "person.fill"
                         )
                         
                         S_CustomSecureField(
@@ -52,15 +52,15 @@ struct SignupView: View {
                         )
                         
                         S_CustomTextField(
-                            placeholder: "name",
+                            placeholder: "Name",
                             text: $name,
-                            imageName: "face.smiling"
+                            imageName: "poweroutlet.type.f.fill"
                         )
                         
-                        S_CustomSecureField(
-                            placeholder: "mbti",
+                        S_CustomTextField(
+                            placeholder: "MBTI",
                             text: $mbti,
-                            imageName: "face.smiling"
+                            imageName: "character.bubble.fill"
                         )
                         
                         

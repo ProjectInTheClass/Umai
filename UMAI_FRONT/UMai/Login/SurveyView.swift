@@ -18,6 +18,15 @@ struct SurveyView: View {
     @State private var showMatBTIScreen = false
     @State private var progress: CGFloat = 0
     
+    private func previousQuestion() {
+        if currentPage > 0 {
+            withAnimation(.spring()) {
+                currentPage -= 1
+                progress = CGFloat(currentPage + 1) / CGFloat(questions.count)
+            }
+        }
+    }
+    
     let questions = [
         SurveySection(title: "맛의 취향", questions: [
             SurveyQuestion(text: "매운 음식을 보면 꼭 한번 도전해보고 싶다.", positiveType: "F", negativeType: "C", subtitle: "맛의 취향")
@@ -26,7 +35,7 @@ struct SurveyView: View {
             SurveyQuestion(text: "강한 양념보다는 깔끔한 본연의 맛을 더 즐긴다.", positiveType: "C", negativeType: "F", subtitle: "맛의 취향")
         ]),
         SurveySection(title: "맛의 취향", questions: [
-            SurveyQuestion(text: "단맛이 강한 디저트가 항상 끌린다.", positiveType: "F", negativeType: "C", subtitle: "맛의 취향")
+            SurveyQuestion(text: "단맛이 강한 디저트가 끌린다.", positiveType: "F", negativeType: "C", subtitle: "맛의 취향")
         ]),
         SurveySection(title: "맛의 취향", questions: [
             SurveyQuestion(text: "짠 음식은 조금 부담스러워서 자주 먹지 않는다.", positiveType: "C", negativeType: "F", subtitle: "맛의 취향")
@@ -154,6 +163,8 @@ struct SurveyView: View {
                 }
                 .padding(.top, 20)
                 
+                
+                
                 if currentPage < questions.count {
                     // Question Card
                     VStack(spacing: 25) {
@@ -171,6 +182,7 @@ struct SurveyView: View {
                         
                         // Answer Buttons
                         VStack(spacing: 15) {
+                            
                             CuteAnswerButton(text: "네 맞아요!", isPositive: true) {
                                 updateScore(for: questions[currentPage].questions[0], isPositive: true)
                                 nextQuestion()
@@ -180,6 +192,20 @@ struct SurveyView: View {
                                 updateScore(for: questions[currentPage].questions[0], isPositive: false)
                                 nextQuestion()
                             }
+                            
+                            Button(action: previousQuestion) {
+                                Image(systemName: "arrowshape.left.fill")
+                                    .padding(.top, 10)
+                                    .foregroundColor(.black)
+                                Text("이전")
+                                    .font(.custom("DMSerifDisplay-Regular", size: 20))
+                                    .foregroundColor(.black)
+                                    .cornerRadius(25)
+                                    .padding(.top, 10)
+                                
+                            }
+                            .disabled(currentPage == 0) // Disable if on the first page
+                            .opacity(currentPage == 0 ? 0.5 : 1.0) // Add visual feedback for disabled state
                         }
                         .padding(.top, 20)
                     }
