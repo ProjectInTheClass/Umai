@@ -74,6 +74,8 @@
 |         |                                                                                                                     |         |
 | ------- | ------------------------------------------------------------------------------------------------------------------- | ------- |
 | SwiftUI | <img src="https://github.com/user-attachments/assets/3632d7d6-8d43-4dd5-ba7a-501a2bc3a3e4" alt="DayJs" width="100"> | 1.11.12 |
+| Swift | <img src="https://github.com/user-attachments/assets/3632d7d6-8d43-4dd5-ba7a-501a2bc3a3e4" alt="DayJs" width="100"> | 1.11.12 |
+
 
 <br/>
 
