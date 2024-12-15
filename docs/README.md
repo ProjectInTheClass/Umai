@@ -81,10 +81,10 @@
 
 ## 5.2 Backend
 
-|         |                                                          |        |
-| ------- | -------------------------------------------------------- | ------ |
-| Node.js | <img src="./images/nodejs.png" alt="nodejs" width="100"> | 23.2.0 |
-| MySQl   | <img src="./images/mysql.png" alt="mysql" width="100">   | 8.0.0  |
+|         |                                                          |        | 특이사항                                             |
+| ------- | -------------------------------------------------------- | ------ | ---------------------------------------------------- |
+| Node.js | <img src="./images/nodejs.png" alt="nodejs" width="100"> | 23.2.0 | "https://github.com/wannabewize/nodejs-samples" 참고 |
+| MySQl   | <img src="./images/mysql.png" alt="mysql" width="100">   | 8.0.0  | AWS에 데이터베이스 서버 배포 완료                    |
 
 ## 5.3 Cooperation
 
