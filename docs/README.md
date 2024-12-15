@@ -93,6 +93,9 @@
 | git    | <img src="./images/git.png" alt="nodejs" width="100">   |
 | notion | <img src="./images/notion.png" alt="mysql" width="100"> |
 
+<br/>
+<br/>
+
 ## 6. Project Structure (프로젝트 구조)
 
 ```plaintext
@@ -128,6 +131,9 @@ UMAI_BACK/
 ├── package.json              # 프로젝트 설정 및 종속성
 └── seed.js                   # 초기 데이터베이스 시드 스크립트
 ```
+
+<br/>
+<br/>
 
 ## 7. Development Workflow (개발 워크플로우)
 
