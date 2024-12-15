@@ -8,6 +8,9 @@
 import Foundation
 
 class UserViewModel: ObservableObject {
+    
+    @Published var userInfo: [String: Any] = [:] // 사용자 정보를 저장할 Dictionary
+
     // Function to send user registration request
     func registerUser(user_name : String, id: String, password: String, mbti: String) {
         guard let url = URL(string: "http://localhost:3333/auth/join") else {
@@ -116,6 +119,45 @@ class UserViewModel: ObservableObject {
         }
         task.resume()
     }
+    
+    func getUserInfo(token: String) {
+            guard let url = URL(string: "http://localhost:3333/auth/me") else {
+                print("Invalid URL")
+                return
+            }
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization") // Bearer token 방식 사용
+            
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    print("Error fetching user info: \(error)")
+                    return
+                }
+                
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    print("Invalid response")
+                    return
+                }
+                
+                if httpResponse.statusCode == 200,
+                   let data = data,
+                   let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                    // 사용자 정보를 업데이트
+                    DispatchQueue.main.async {
+                        self.userInfo = jsonResponse
+                    }
+                    print("User info fetched successfully")
+                    print(jsonResponse)
+                } else {
+                    print("Failed to fetch user info. Status code: \(httpResponse.statusCode)")
+                    print("Token sent in Authorization header: Bearer \(token)")
+                }
+            }
+            task.resume()
+        }
+
 
 
 

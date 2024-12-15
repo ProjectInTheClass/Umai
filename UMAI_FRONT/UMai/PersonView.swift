@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PersonView: View {
     @State private var showLoginView = false
+    @StateObject private var userViewModel = UserViewModel()
     var body: some View {
         NavigationView {
             ZStack {
@@ -17,7 +18,7 @@ struct PersonView: View {
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 25) {
-                        ProfileHeaderBlock()
+                        ProfileHeaderBlock(userViewModel: userViewModel)
                             .padding(.horizontal)
                         
                         
@@ -67,12 +68,18 @@ struct PersonView: View {
                 LoginView()
             }
             .navigationBarHidden(true)
+            .onAppear {
+                if let token = UserDefaults.standard.string(forKey: "authToken") {
+                    userViewModel.getUserInfo(token: token)
+                }
+            }
         }
     }
 }
 
 struct ProfileHeaderBlock: View {
     @State private var showingShareSheet = false
+    @ObservedObject var userViewModel: UserViewModel // UserViewModel 전달
     
     var body: some View {
         VStack(spacing: 25) {
@@ -80,7 +87,7 @@ struct ProfileHeaderBlock: View {
             HStack(alignment: .center) {
                 // Profile Info
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("Winter")
+                    Text(userViewModel.userInfo["nickname"] as? String ?? "unknown")
                         .font(.custom("DMSerifDisplay-Regular", size: 28))
                         .foregroundColor(.black)
                     Text("The Clean Aristocrat")
@@ -99,7 +106,8 @@ struct ProfileHeaderBlock: View {
             .padding(.top, 25)
             
             // BTI Card
-            BtiCardBlock()
+            BtiCardBlock(btiType: userViewModel.userInfo["btiType"] as? String ?? "Unknown",
+                         description: userViewModel.userInfo["description"] as? String ?? "No description")
             
             // Share Button
             Button(action: {
@@ -121,8 +129,8 @@ struct ProfileHeaderBlock: View {
             
             // Additional Info
             HStack(spacing: 15) {
-                InfoBox(title: "MBTI", value: "ENFJ")
-                InfoBox(title: "즐겨찾기", value: "6")
+                InfoBox(title: "MBTI", value: userViewModel.userInfo["MBTI"] as? String ?? "Unknown")
+                InfoBox(title: "즐겨찾기", value: userViewModel.userInfo["favor"] as? String ?? "Unknown")
             }
             .padding(.horizontal, 25)
             .padding(.bottom, 25)
@@ -132,7 +140,7 @@ struct ProfileHeaderBlock: View {
         .shadow(color: Color.black.opacity(0.05), radius: 15)
         .sheet(isPresented: $showingShareSheet) {
             ShareBTIView(
-                btiType: "CTSP",
+                btiType: userViewModel.userInfo["matBTI"] as? String ?? "Unknown",
                 description: "깔끔한 맛의 귀족"
             )
         }
@@ -140,6 +148,10 @@ struct ProfileHeaderBlock: View {
 }
 
 struct BtiCardBlock: View {
+    
+    let btiType: String
+    let description: String
+    
     var body: some View {
         ZStack {
             // 배경 패턴
