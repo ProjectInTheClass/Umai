@@ -23,7 +23,7 @@ $ npm start
 
 # 2. Team Members (팀원 및 팀 소개)
 | 박호연 | 김진태  | 정주환 |
-|:------:|:------:|:------:|:------:|
+|:------:|:------:|:------:|
 | <img src="https://github.com/user-attachments/assets/c1c2b1e3-656d-4712-98ab-a15e91efa2da" alt="박호연" width="150"> | <img src="https://github.com/user-attachments/assets/78ec4937-81bb-4637-975d-631eb3c4601e" alt="김진태" width="150"> | <img src="https://github.com/user-attachments/assets/78ce1062-80a0-4edb-bf6b-5efac9dd992e" alt="전주환" width="150"> |
 | FE | BE | BE |
 | [GitHub](https://github.com/HoYeonPark1221) | [GitHub](https://github.com/KimJinTae1) | [GitHub]() |
