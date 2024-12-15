@@ -85,3 +85,41 @@
 | ------- | -------------------------------------------------------- | ------- |
 | Node.js | <img src="./images/nodejs.png" alt="nodejs" width="100"> | 10.12.5 |
 | MySQl   | <img src="./images/mysql.png" alt="mysql" width="100">   | 10.12.5 |
+
+## 6. Project Structure (프로젝트 구조)
+
+UMAI_BACK/
+├── config/ # 프로젝트 설정 파일 (DB, 환경변수 등)
+│ ├── database.js # 데이터베이스 설정 및 연결
+│ └── passport.js # 인증 및 세션 설정
+│
+├── controllers/ # 비즈니스 로직 처리 (컨트롤러)
+│ ├── userController.js # 사용자 관련 로직
+│ └── musicController.js # 음악 추천/관리에 관한 로직
+│
+├── middlewares/ # 미들웨어 (요청/응답 조작 및 검증)
+│ ├── authMiddleware.js # 인증 처리 미들웨어
+│ └── errorHandler.js # 에러 핸들링 미들웨어
+│
+├── models/ # 데이터 모델 정의 (Sequelize ORM)
+│ ├── User.js # 사용자 테이블 모델
+│ └── Music.js # 음악 테이블 모델
+│
+├── passport/ # 인증 전략 설정
+│ ├── localStrategy.js # 로컬 로그인 전략
+│ └── jwtStrategy.js # JWT 로그인 전략
+│
+├── routers/ # 라우터 정의 (요청 라우팅)
+│ ├── userRouter.js # 사용자 관련 라우팅
+│ └── musicRouter.js # 음악 추천 관련 라우팅
+│
+├── views/ # 뷰 파일 (EJS 템플릿)
+│ ├── index.ejs # 메인 페이지
+│ └── error.ejs # 에러 페이지
+│
+├── node_modules/ # 설치된 npm 패키지
+├── index.js # 애플리케이션 진입점
+├── package-lock.json # 종속성 버전 기록 파일
+├── package.json # 프로젝트 설정 및 종속성 목록
+├── README.md # 프로젝트 설명서
+└── seed.js # 초기 데이터베이스 시드 스크립트
