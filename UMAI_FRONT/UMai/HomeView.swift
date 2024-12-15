@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var selectedTab = "MSFP"
-    let tabs = ["MSFP", "Local", "Popular"]
+    @State private var userFoodType: String = ""
+    @State private var selectedTab = "MatBTI"
+    let tabs = ["MatBTI", "Local", "Popular"]
     
     var body: some View {
         ZStack {
@@ -59,7 +60,7 @@ struct HomeView: View {
                         .overlay(
                             HStack {
                                 VStack {
-                                    Text("CTSP") //Liquefier //DMSerifDisplay-Italic //DMSerifDisplay-Regular
+                                    Text("\(userFoodType)") //Liquefier //DMSerifDisplay-Italic //DMSerifDisplay-Regular
                                         .foregroundColor(Color("White"))
                                         .font(.custom("DMSerifDisplay-Regular", size: 34))
                                         .offset(x: -60, y: -24)
@@ -76,6 +77,11 @@ struct HomeView: View {
                                     .frame(width: 100, height: 100)
                             }
                         )
+                }
+                .onAppear {
+                    if let storedFoodType = UserDefaults.standard.string(forKey: "userFoodType") {
+                        userFoodType = storedFoodType
+                    }
                 }
                 
                 // 텝 세션들
@@ -112,7 +118,7 @@ struct HomeView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 20) {
                             switch selectedTab {
-                            case "MSFP":
+                            case "MatBTI":
                                 FoodCard(title: "Hot Pot ", price: "$25.00", rating: "4.8")
                                 FoodCard(title: "ramen", price: "$18.00", rating: "4.9")
                                 FoodCard(title: "deopbap", price: "$15.00", rating: "4.7")
@@ -172,6 +178,7 @@ struct FoodCard: View {
         .cornerRadius(15)
         .padding(.top)
     }
+    
 }
 
 #Preview {
