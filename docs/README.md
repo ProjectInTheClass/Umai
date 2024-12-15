@@ -5,7 +5,7 @@
 <br/>
 
 # 0. Getting Started (시작하기!)
-| <img src="https://github.com/ProjectInTheClass/Umai/blob/main/docs/images/team.png" width="2000"> 
+<img src="https://github.com/ProjectInTheClass/Umai/blob/main/docs/images/team.png" width="2000"> 
 
 
 <br/>
