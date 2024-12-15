@@ -8,7 +8,7 @@
 # 0. Getting Started (시작하기)
 
 ```bash
-$ npm start
+$ npm start || nodemon index.js
 ```
 
 [서비스 링크](https://club-project-one.vercel.app/)
