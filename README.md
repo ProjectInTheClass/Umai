@@ -6,12 +6,7 @@
 <br/>
 
 # 0. Getting Started (시작하기)
-
-```bash
-$ npm start || nodemon index.js
-```
-
-[서비스 링크](https://club-project-one.vercel.app/)
+<img src="https://github.com/docs/images/main.png" alt="박호연" width="150"> 
 
 <br/>
 <br/>
