@@ -15,6 +15,7 @@ struct LoginView: View {
     @State private var showSignUpView = false
     @State private var showAlert = false
     @State private var alertMessage = ""
+    @State private var userFoodType: String = ""
     @StateObject private var userViewModel = UserViewModel()
     
     var body: some View {
@@ -113,7 +114,7 @@ struct LoginView: View {
                 ContentView()
             }
             .fullScreenCover(isPresented: $showSignUpView) {
-                MatBtiResultView()
+                SignupView(matBTI: $userFoodType)
                 
             }
             .alert("Error", isPresented: $showAlert) {
