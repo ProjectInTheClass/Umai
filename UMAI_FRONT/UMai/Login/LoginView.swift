@@ -34,9 +34,9 @@ struct LoginView: View {
                     VStack(spacing: 20) {
                         // Email Field
                         CustomTextField(
-                            placeholder: "Email",
+                            placeholder: "ID",
                             text: $id,
-                            imageName: "envelope.fill"
+                            imageName: "person.fill"
                         )
                         
                         // Password Field
