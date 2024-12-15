@@ -1,12 +1,11 @@
 <a href="https://club-project-one.vercel.app/" target="_blank">
 
 </a>
-#1 Umai!!
 <br/>
 <br/>
 
-# 0. Getting Started (시작하기)
-| <img src="https://github.com/ProjectInTheClass/Umai/blob/main/docs/images/team.png" alt="박호연" width="2000"> 
+# 0. Getting Started (시작하기!)
+| <img src="https://github.com/ProjectInTheClass/Umai/blob/main/docs/images/team.png" width="2000"> 
 
 
 <br/>
