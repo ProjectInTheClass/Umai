@@ -114,7 +114,7 @@ struct ProfileHeaderBlock: View {
                 showingShareSheet = true
             }) {
                 VStack(alignment: .center) {
-                    Text("Share your MBFP!")
+                    Text("Share your MatBTI!")
                         .foregroundColor(Color("White"))
                         .font(.custom("DMSerifDisplay-Italic", size: 20))
                         .frame(maxWidth: .infinity, alignment: .center)
