@@ -78,6 +78,7 @@ struct PersonView: View {
 }
 
 struct ProfileHeaderBlock: View {
+    @State private var userFoodType: String = ""
     @State private var showingShareSheet = false
     @ObservedObject var userViewModel: UserViewModel // UserViewModel 전달
     
@@ -90,9 +91,9 @@ struct ProfileHeaderBlock: View {
                     Text(userViewModel.userInfo["nickname"] as? String ?? "unknown")
                         .font(.custom("DMSerifDisplay-Regular", size: 28))
                         .foregroundColor(.black)
-                    Text("The Clean Aristocrat")
-                        .font(.custom("DMSerifDisplay-Regular", size: 16))
-                        .foregroundColor(.gray)
+//                    Text("The Clean Aristocrat")
+//                        .font(.custom("DMSerifDisplay-Regular", size: 16))
+//                        .foregroundColor(.gray)
                 }
                 
                 Spacer()
@@ -148,6 +149,7 @@ struct ProfileHeaderBlock: View {
 }
 
 struct BtiCardBlock: View {
+    @State private var userFoodType: String = ""
     
     let btiType: String
     let description: String
@@ -179,11 +181,11 @@ struct BtiCardBlock: View {
             
             // 메인 콘텐츠
             VStack(spacing: 20) {
-                Text("CTSP")
+                Text("\(userFoodType)")
                     .font(.custom("DMSerifDisplay-Regular", size: 52))
                     .foregroundColor(Color("lightRed"))
                 
-                Text("깔끔한 맛의 귀족")
+                Text(getFoodTitle(for: userFoodType))
                     .font(.custom("DMSerifDisplay-Regular", size: 20))
                     .foregroundColor(.gray)
                 
@@ -197,6 +199,11 @@ struct BtiCardBlock: View {
                 }
             }
             .padding(.vertical, 40)
+            .onAppear {
+                if let storedFoodType = UserDefaults.standard.string(forKey: "userFoodType") {
+                    userFoodType = storedFoodType
+                }
+            }
         }
         .frame(height: 300)
         .background(Color.white)
@@ -242,23 +249,28 @@ struct InfoBox: View {
 
 // BTI 타입과 설명
 let tasteBTIClasses = [
-    "FAHV": "The Spice Hunter 매운 음식을 정복하는 맛 사냥꾼",
-    "FAHP": "Fine Flavor Explorer 프리미엄 자극의 모험가",
-    "FASV": "Bouncy Bargain Seeker 부드럽게 만나는 가성비 탐험가",
-    "FASP": "Silk Road Pioneer 부드러운 맛의 럭셔리 여행자",
-    "FTHV": "Crispy Value Guardian 바삭한 맛의 가성비 수호자",
-    "FTHP": "Traditional Spice Artisan 전통 있는 매운맛의 장인",
-    "FTSV": "Soft Spice Economist 부드러운 자극의 실속파",
-    "FTSP": "Premium Comfort Master 고급스러운 편안함의 달인",
-    "CAHV": "Fresh Adventure Scout 깔끔한 맛의 모험 스카우트",
-    "CAHP": "Pure Luxury Wanderer 깔끔한 맛의 고급 유랑가",
-    "CASV": "Smooth Deal Hunter 부드러운 가성비의 사냥꾼",
-    "CASP": "Elegant Taste Curator 우아한 맛의 큐레이터",
-    "CTHV": "Classic Value Expert 전통적 가치의 전문가",
-    "CTHP": "Noble Taste Keeper 고귀한 맛의 수호자",
-    "CTSV": "Gentle Savings Guru 부드러운 실속의 구루",
-    "CTSP": "The Clean Aristocrat 깔끔한 맛의 귀족"
+    "FAHV": "매운 음식을 정복하는 맛 사냥꾼",
+    "FAHP": "프리미엄 자극의 모험가",
+    "FASV": "부드럽게 만나는 가성비 탐험가",
+    "FASP": "부드러운 맛의 럭셔리 여행자",
+    "FTHV": "바삭한 맛의 가성비 수호자",
+    "FTHP": "전통 있는 매운맛의 장인",
+    "FTSV": "부드러운 자극의 실속파",
+    "FTSP": "고급스러운 편안함의 달인",
+    "CAHV": "끔한 맛의 모험 스카우트",
+    "CAHP": "깔끔한 맛의 고급 유랑가",
+    "CASV": "부드러운 가성비의 사냥꾼",
+    "CASP": "우아한 맛의 큐레이터",
+    "CTHV": "전통적 가치의 전문가",
+    "CTHP": "고귀한 맛의 수호자",
+    "CTSV": "부드러운 실속의 구루",
+    "CTSP": "깔끔한 맛의 귀족"
 ]
+
+// Function to get the food personality title
+func getFoodTitle(for foodType: String) -> String {
+    return tasteBTIClasses[foodType, default: "No food personality type selected."]
+}
 
 
 
