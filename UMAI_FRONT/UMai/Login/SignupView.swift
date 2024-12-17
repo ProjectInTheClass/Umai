@@ -77,7 +77,7 @@ struct SignupView: View {
                             )
                             showLoginView = true
                         }) {
-                            Text("SignUP")
+                            Text("Sign Up")
                                 .font(.custom("DMSerifDisplay-Regular", size: 20))
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity)

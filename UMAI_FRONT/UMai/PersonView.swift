@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PersonView: View {
     @State private var showLoginView = false
+    @State private var showSurveyView = false
     @StateObject private var userViewModel = UserViewModel()
     var body: some View {
         NavigationView {
@@ -40,7 +41,7 @@ struct PersonView: View {
                             }
                             
                             Button(action: {
-                                showLoginView = true
+                                showSurveyView = true
                                 
                             }) {
                                 HStack {
@@ -62,8 +63,8 @@ struct PersonView: View {
                     .padding(.top)
                 }
             }
-            .fullScreenCover(isPresented: $showLoginView) {
-                LoginView()
+            .fullScreenCover(isPresented: $showSurveyView) {
+                SurveyView()
             }
             .navigationBarHidden(true)
             .onAppear {
