@@ -21,8 +21,6 @@ struct PersonView: View {
                         ProfileHeaderBlock(userViewModel: userViewModel)
                             .padding(.horizontal)
                         
-                        
-                        
                         // Action Buttons
                         VStack(spacing: 12) {
                             Button(action: {
@@ -91,9 +89,9 @@ struct ProfileHeaderBlock: View {
                     Text(userViewModel.userInfo["nickname"] as? String ?? "unknown")
                         .font(.custom("DMSerifDisplay-Regular", size: 28))
                         .foregroundColor(.black)
-//                    Text("The Clean Aristocrat")
-//                        .font(.custom("DMSerifDisplay-Regular", size: 16))
-//                        .foregroundColor(.gray)
+                    Text(getEnglishFoodTitle(for: userFoodType))
+                        .font(.custom("DMSerifDisplay-Regular", size: 16))
+                        .foregroundColor(.gray)
                 }
                 
                 Spacer()
@@ -105,6 +103,11 @@ struct ProfileHeaderBlock: View {
             }
             .padding(.horizontal, 25)
             .padding(.top, 25)
+            .onAppear {
+                if let storedFoodType = UserDefaults.standard.string(forKey: "userFoodType") {
+                    userFoodType = storedFoodType
+                }
+            }
             
             // BTI Card
             BtiCardBlock(btiType: userViewModel.userInfo["btiType"] as? String ?? "Unknown",
@@ -267,9 +270,34 @@ let tasteBTIClasses = [
     "CTSP": "깔끔한 맛의 귀족"
 ]
 
+let englishBTIClass: [String: String] = [
+    "FAHV": "The Spice Hunter",
+    "FAHP": "Fine Flavor Explorer",
+    "FASV": "Bouncy Bargain Seeker",
+    "FASP": "Silk Road Pioneer 부드러운",
+    "FTHV": "Crispy Value Guardian 바삭한",
+    "FTHP": "Traditional Spice Artisan",
+    "FTSV": "Soft Spice Economist",
+    "FTSP": "Premium Comfort Master",
+    "CAHV": "Fresh Adventure Scout",
+    "CAHP": "Pure Luxury Wanderer",
+    "CASV": "Smooth Deal Hunter",
+    "CASP": "Elegant Taste Curator",
+    "CTHV": "Classic Value Expert",
+    "CTHP": "Noble Taste Keeper",
+    "CTSV": "Gentle Savings Guru",
+    "CTSP": "The Clean Aristocrat"
+]
+
+
+
 // Function to get the food personality title
 func getFoodTitle(for foodType: String) -> String {
     return tasteBTIClasses[foodType, default: "No food personality type selected."]
+}
+
+func getEnglishFoodTitle(for foodType: String) -> String {
+    return englishBTIClass[foodType, default: "No food personality type selected."]
 }
 
 
