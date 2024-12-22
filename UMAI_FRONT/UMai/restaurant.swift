@@ -13,7 +13,7 @@ struct Restaurant: Identifiable, Decodable, Hashable {
     var name: String
     var location: String
     var menu: String
-    var imageName: URL? // Optional, can be nil if no image URL is available
+    var imageName: String
     var description: String
     var Taste: Int
     var price: Int

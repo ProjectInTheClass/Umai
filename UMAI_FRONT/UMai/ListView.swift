@@ -62,7 +62,7 @@ struct RestaurantCard: View {
             .frame(height: 300)
             .overlay(
                 VStack(alignment: .leading, spacing: 8) {
-                    Image("Sushi")
+                    Image(restaurant.imageName)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: .infinity)
