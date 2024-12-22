@@ -10,9 +10,65 @@ import SwiftUI
 struct HomeView: View {
     @State private var userFoodType: String = ""
     @State private var selectedTab = "MatBTI"
+    @StateObject private var viewModel = RestaurantViewModel()
     let tabs = ["MatBTI", "Local", "Popular"]
     
     var body: some View {
+        
+        let menuDictionary: [String: [Restaurant]] = [
+            "FAHV": viewModel.restaurants.filter { restaurant in
+                return restaurant.name == "Rice Cake Heaven"
+            },
+            "FAHP": viewModel.restaurants.filter { restaurant in
+                return restaurant.name == "HotPot Palace" || restaurant.name == "Ramen King"
+            },
+            "FASV": viewModel.restaurants.filter { restaurant in
+                return restaurant.name == "HotPot Palace" || restaurant.name == "Omurice Factory"
+            },
+            "FASP": viewModel.restaurants.filter { restaurant in
+                return restaurant.name == "Ramen King" || restaurant.name == "Deopbap House"
+            },
+            "FTHV": viewModel.restaurants.filter { restaurant in
+                return restaurant.name == "So Pheon" || restaurant.name == "Rick Cake Heaven"
+            },
+            "FTHP": viewModel.restaurants.filter { restaurant in
+                return restaurant.name == "Ramen King" || restaurant.name == "Yakisoba Street"
+            },
+            "FTSV": viewModel.restaurants.filter { restaurant in
+                return restaurant.name == "HotPot Palace" || restaurant.name == "Omurice Factory"
+            },
+            "FTSP": viewModel.restaurants.filter { restaurant in
+                return restaurant.name == "Ramen King" || restaurant.name == "Deopbap House"
+            },
+            "CAHV": viewModel.restaurants.filter { restaurant in
+                return restaurant.name == "So Pheon" // Only show So Pheon for FAHV
+            },
+            "CAHP": viewModel.restaurants.filter { restaurant in
+                return restaurant.name == "So Pheon" // Only show So Pheon for FAHV
+            },
+            "CASV": viewModel.restaurants.filter { restaurant in
+                return restaurant.name == "So Pheon" // Only show So Pheon for FAHV
+            },
+            "CASP": viewModel.restaurants.filter { restaurant in
+                return restaurant.name == "So Pheon" // Only show So Pheon for FAHV
+            },
+            "CTHV": viewModel.restaurants.filter { restaurant in
+                return restaurant.name == "So Pheon" // Only show So Pheon for FAHV
+            },
+            "CTHP": viewModel.restaurants.filter { restaurant in
+                return restaurant.name == "So Pheon" // Only show So Pheon for FAHV
+            },
+            "CTSV": viewModel.restaurants.filter { restaurant in
+                return restaurant.name == "So Pheon" // Only show So Pheon for FAHV
+            },
+            "CTSP": viewModel.restaurants.filter { restaurant in
+                return restaurant.name == "So Pheon" // Only show So Pheon for FAHV
+            }
+        ]
+        
+        // Retrieve the restaurants based on userFoodType, defaulting to all restaurants if the type is not found
+            let filteredRestaurants = menuDictionary[userFoodType] ?? viewModel.restaurants
+        
         ZStack {
             Color("backgroundGray")
                 .ignoresSafeArea(.all)
@@ -89,7 +145,7 @@ struct HomeView: View {
                     
                     //추천 클씨
                     HStack {
-                        Text("Recomend")
+                        Text("Recommend")
                             .font(.custom("DMSerifDisplay-Regular", size: 27))
                         
                         Spacer()
@@ -119,22 +175,31 @@ struct HomeView: View {
                         HStack(spacing: 20) {
                             switch selectedTab {
                             case "MatBTI":
-                                FoodCard(title: "Hot Pot ", price: "$25.00", rating: "4.8")
-                                FoodCard(title: "ramen", price: "$18.00", rating: "4.9")
-                                FoodCard(title: "deopbap", price: "$15.00", rating: "4.7")
+                                ForEach(filteredRestaurants) { restaurant in
+                                    NavigationLink(value: restaurant) {
+                                        FoodCard(restaurant: restaurant)
+                                    }
+                                }
                             case "Local":
-                                FoodCard(title: "Omurice", price: "$25.00", rating: "4.8")
-                                FoodCard(title: "rice cake", price: "$18.00", rating: "4.9")
-                                FoodCard(title: "Sashimi", price: "$15.00", rating: "4.7")
+                                ForEach(viewModel.restaurants) { restaurant in
+                                    NavigationLink(value: restaurant) {
+                                        FoodCard(restaurant: restaurant)
+                                    }
+                                }
                             case "Popular":
-                                FoodCard(title: "Yakisoba", price: "$25.00", rating: "4.8")
-                                FoodCard(title: "Yukhoe", price: "$18.00", rating: "4.9")
-                                FoodCard(title: "Sushi", price: "$15.00", rating: "4.7")
+                                ForEach(viewModel.restaurants) { restaurant in
+                                    NavigationLink(value: restaurant) {
+                                        FoodCard(restaurant: restaurant)
+                                    }
+                                }
                             default:
                                 EmptyView()
                             }
                         }
                         .padding(.horizontal)
+                        .onAppear {
+                            viewModel.fetchRestaurants()
+                        }
                     }
                 }
             }
@@ -143,24 +208,27 @@ struct HomeView: View {
 }
 
 struct FoodCard: View {
-    let title: String
-    let price: String
-    let rating: String
+    let restaurant: Restaurant
+    
+    private var averageRating: Double {
+           let total = restaurant.Taste + restaurant.price + restaurant.accessibility + restaurant.emotion + restaurant.quantity
+           return Double(total) / 5.0
+       }
     
     var body: some View {
         VStack(alignment: .leading) {
-            Image(title)
+            Image(restaurant.imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 180)
                 .padding(.top, 8)
             
-            Text(title)
+            Text(restaurant.name)
                 .font(.custom("DMSerifDisplay-Regular", size: 18))
                 .padding(.top, 8)
             
             HStack {
-                Text(price)
+                Text("$\(restaurant.price * 5).00")
                     .font(.custom("DMSerifDisplay-Regular", size: 16))
                     .foregroundColor(.gray)
                 
@@ -168,8 +236,8 @@ struct FoodCard: View {
                 
                 Image(systemName: "star.fill")
                     .foregroundColor(.yellow)
-                Text(rating)
-                    .font(.custom("DMSerifDisplay-Regular", size: 14))
+                Text(String(format: "%.1f", averageRating))
+                    .font(.system(size: 14))
             }
         }
         .frame(width: 160)

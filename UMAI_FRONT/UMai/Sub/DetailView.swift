@@ -12,6 +12,11 @@ struct DetailView: View {
     let restaurant: Restaurant
     @Environment(\.presentationMode) var presentationMode
     
+    private var averageRating: Double {
+           let total = restaurant.Taste + restaurant.price + restaurant.accessibility + restaurant.emotion + restaurant.quantity
+           return Double(total) / 5.0
+       }
+    
     var body: some View {
         ZStack {
             Color("backgroundGray")
@@ -52,7 +57,7 @@ struct DetailView: View {
                         HStack(spacing: 4) {
                             Image(systemName: "star.fill")
                                 .foregroundColor(Color("star"))
-                            Text("\(restaurant.Taste).9")
+                            Text(String(format: "%.1f", averageRating))
                                 .font(.system(size: 18))
                                 .foregroundColor(.gray)
                         }

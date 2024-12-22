@@ -45,9 +45,9 @@ struct ListView: View {
             .onAppear {
                 viewModel.fetchRestaurants()
             }
-//            .navigationDestination(for: Restaurant.self) { restaurant in
-//                DetailView(restaurant: restaurant)
-//            }
+            .navigationDestination(for: Restaurant.self) { restaurant in
+                DetailView(restaurant: restaurant)
+            }
         }
     }
 }
